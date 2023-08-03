@@ -43,7 +43,7 @@
                     <img src="{{ asset('users/img/logo.png') }}" class='mx-auto text-center py-3 w-75' alt="">
                 </div>
 
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('user.register') }}">
                     @csrf
                     <div class="mb-2">
                         <label for="name" class="form-label">Name</label>

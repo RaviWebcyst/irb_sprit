@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\RewardController;
 use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SliderImageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +23,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('admin/login', [HomeController::class, 'loginform']);
+Route::post('adminlogincheck', [HomeController::class, 'adminlogin_check'])->name('admin.login.check');
+Route::post('userlogincheck', [HomeController::class, 'userlogin_check'])->name('user.login.check');
+
+
  Route::get('/', function () {
     return view('welcome');
 });
@@ -37,4 +42,5 @@ Route::resource('e-send', ESendController::class);
 Route::resource('support', SupportController::class);
 Route::resource('change-password', ChangePasswordController::class);
 Route::resource('product', ProductController::class);
+Route::resource('slider-images', SliderImageController::class);
 });

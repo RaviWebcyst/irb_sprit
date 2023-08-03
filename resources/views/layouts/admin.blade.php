@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Admin Panel</title>
+    <link rel="shortcut icon" href="{{ asset('users/img/logo.png')}}">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Icons Link -->
@@ -68,7 +70,7 @@
                 </button>
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('home.index') }}"><img
-                            src="{{ asset('admin/images/logo.png') }}" width="150 " class="rounded-circle "></a>
+                            src="{{ asset('users/img/logo.png') }}" width="150 " class=" "></a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <div class="btn-group dropstart">
@@ -78,13 +80,17 @@
                                         alt="">
                                 </button>
                                 <ul class="dropdown-menu border-0 bg-light">
-                                    <li><a class="dropdown-item   cstm_hover " href="{{ route('change-password.index') }}"><i class="ri-git-repository-private-fill"></i> Change Password</a></li>
+                                    <li><a class="dropdown-item   cstm_hover "
+                                            href="{{ route('change-password.index') }}"><i
+                                                class="ri-git-repository-private-fill"></i> Change Password</a></li>
                                     <li>
-                                        <a class=" dropdown-item   cstm_hover" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <a class=" dropdown-item   cstm_hover" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="ri-logout-circle-line"></i> Logout</a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
                                         </a>
                                     </li>
                                 </ul>
@@ -175,6 +181,17 @@
                             <ul class="dropdown-menu border-0 bg-light shadow">
                                 <li><a class="dropdown-item cstm_hover fs-5"
                                         href="{{ route('support.index') }}">Support</a></li>
+                                <li><a class="dropdown-item cstm_hover fs-5" href="#"> Detils</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown px-3">
+                            <a class="nav-link  " href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="ri-settings-2-line"></i>Setting
+                            </a>
+                            <ul class="dropdown-menu border-0 bg-light shadow">
+                                <li><a class="dropdown-item cstm_hover fs-5"
+                                        href="{{ route('slider-images.index') }}">Home Page Slider</a></li>
                                 <li><a class="dropdown-item cstm_hover fs-5" href="#"> Detils</a></li>
                             </ul>
                         </li>

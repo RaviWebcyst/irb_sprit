@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 
 class usersController extends Controller
@@ -25,8 +26,6 @@ class usersController extends Controller
         ]);
 
       
-
-
         $user = User::where("uid",$data['spid'])->first();
         $usr = User::where("email",$data['email'])->first();
         if($data['spid'] == "admin"  || $user == null)
@@ -110,6 +109,31 @@ class usersController extends Controller
         return view('user.change_pass');
     }
 
+    public function invest(){
+        return view('user.topup_others');
+    }
+
+    public function invest_details(){
+        return view('user.topup_users');
+    }
+
+   
+    public function direct_list(){
+        $user = Auth::user();
+        $users = User::where("spid",$user->uid)->orderBy("id","desc")->paginate(50);
+        return view('user.direct_list',compact('users'));
+    }
+    public function team_list(){
+        $user = Auth::user();
+        $users = downline::where("tagsp",$user->uid)->orderBy("level","asc")->paginate(50);
+        $users->map(function($data){
+            $data->user = User::where("uid",$data->user_id)->select("name")->first();
+            return $data;
+        });
+        return view('user.team_list',compact('users'));
+    }
+    
+
     public function check_sponser(Request $request){
         $user = User::where("uid",$request->id)->first();
         if($user == null){
@@ -120,6 +144,26 @@ class usersController extends Controller
         return response()->json(compact('user_name'));
     }
 
+    public function tickets(){
+        return view('user.tickets');
+    }
+    public function create_ticket(){
+        return view('user.create_ticket');
+    }
+
+    public function direct_bonus(){
+        return view('user.direct_bonus');
+    }
+    public function wallet_details(){
+        return view('user.wallet_details');
+    }
+    public function transactions(){
+        return view('user.transactions');
+    }
+
+    public function withdraw_details(){
+        return view('user.withdraw_details');
+    }
 
 
 }

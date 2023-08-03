@@ -152,22 +152,22 @@
                                         <input class="form-control" name="national_id" type="file" value="">
                                     
                                     <img src=""
-                                        onerror="this.src='dist/img/gal.jpg';" alt="005" title="005" style="width: 100px;">
+                                        onerror="" alt="005" title="005" style="width: 100px;">
                                 </div>
                                 <div class="form-group text-center">
                                 <label class="control-label">Photo id</label>
-                                    
+                                        
                                     <input class="form-control" name="photo_id" type="file" value="">
                                    
                                     <img src=""
-                                        onerror="this.src='dist/img/gal.jpg';" alt="005" title="005" style="width: 100px;">
+                                        onerror="" alt="005" title="005" style="width: 100px;">
                             </div>
 
                             <div class="form-group text-center">
                                 <label class="control-label">Your Photo</label>
                                     <input class="form-control" name="user_pic" type="file" value="">
                                     <img src=""
-                                        onerror="this.src='dist/img/gal.jpg';" alt="005" title="005" style="width: 100px;">
+                                        onerror="" alt="005" title="005" style="width: 100px;">
                             </div>
                            
                             </div>

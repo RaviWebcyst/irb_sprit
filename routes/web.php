@@ -38,6 +38,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profile', [App\Http\Controllers\usersController::class, 'profile'])->name('user.profile');
 Route::get('/edit_profile', [App\Http\Controllers\usersController::class, 'edit_profile'])->name('user.edit_profile');
 Route::get('/change_pass', [App\Http\Controllers\usersController::class, 'password'])->name('user.password');
+Route::get('/team_list', [App\Http\Controllers\usersController::class, 'team_list'])->name('user.team_list');
+Route::get('/direct_list', [App\Http\Controllers\usersController::class, 'direct_list'])->name('user.direct_list');
+Route::get('/invest', [App\Http\Controllers\usersController::class, 'invest'])->name('user.invest');
+Route::get('/invest_details', [App\Http\Controllers\usersController::class, 'invest_details'])->name('user.invest_details');
+Route::get('/tickets', [App\Http\Controllers\usersController::class, 'tickets'])->name('user.tickets');
+Route::get('/create_ticket', [App\Http\Controllers\usersController::class, 'create_ticket'])->name('user.create_ticket');
+Route::get('/direct_bonus', [App\Http\Controllers\usersController::class, 'direct_bonus'])->name('user.direct_bonus');
+Route::get('/wallet_details', [App\Http\Controllers\usersController::class, 'wallet_details'])->name('user.wallet_details');
+Route::get('/transactions', [App\Http\Controllers\usersController::class, 'transactions'])->name('user.transactions');
+Route::get('/withdraw_details', [App\Http\Controllers\usersController::class, 'withdraw_details'])->name('user.withdraw_details');
 
 Route::prefix('admin')->middleware('is_admin')->group(function () {
 Route::resource('home', AdminHomeController::class);

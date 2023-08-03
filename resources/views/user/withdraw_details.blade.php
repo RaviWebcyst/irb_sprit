@@ -21,7 +21,7 @@
     <div class="content-wrapper">
         <section class="content">
             <div class="container-fluid">
-                <div class="row text-center">
+                {{-- <div class="row text-center">
                 <div class="col-12">
             
                 <div class="box-header with-border pt-5">
@@ -49,10 +49,10 @@
     
                         </div>
             </div>
-        </div>
+        </div> --}}
         <div style="width:100%;">
       <div class="col-12 pt-3 pb-4">
-                    <h3 class="box-title text-center"><strong>Pending Withdraw Request (Total:-<?php echo $totalResult; ?>)</strong>
+                    <h3 class="box-title text-center"><strong>Pending Withdraw Request (Total:-)</strong>
                 </h3>
             <div class="box-body">
                 <div class="table-responsive">
@@ -83,7 +83,7 @@
         </section>
         <div class="col-12 pt-5">
         
-        <h3 class="box-title text-center"><strong>Conformed Withdraw Request (Total:-)</strong>
+        <h3 class="box-title text-center"><strong>Confirmed Withdraw Request (Total:-)</strong>
     </h3>
     
     

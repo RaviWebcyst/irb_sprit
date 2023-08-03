@@ -14348,15 +14348,18 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 [class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link,
 [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link,
-[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus {
+[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus ,
+[class*=sidebar-dark-] .nav-sidebar>.nav-item>.active {
     background-color: rgba(94, 29, 171, 1);
     border-left: 7px solid #F79333;
     color: #ffffff;
     font-weight: 600;
 }
 
+
 [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link.active {
-    color: #00000094;
+    /* color: #00000094; */
+    color: white;
     font-weight: 500;
     font-size: 18px;
 }

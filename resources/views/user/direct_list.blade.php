@@ -14,6 +14,7 @@
                             <table class="table table-hover table-bordered text-nowrap">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Affiliate ID</th>
                                         <th>Name</th>
                                         <th>Joining Date</th>
@@ -21,7 +22,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    @if(!empty($users))
+                                    @foreach($users as $key=>$user)
+                                    <tr>
+                                      <td>{{$users->firstItem()+$key}}</td>
+                                      <td>{{$user->uid}}</td>
+                                      <td>{{$user->name}}</td>
+                                      <td>{{$user->created_at}}</td>
+                                      <td>{{$user->paid_date}}</td>
+                                    </tr>
+                                    @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

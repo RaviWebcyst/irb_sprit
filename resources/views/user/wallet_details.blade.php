@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+
+
 <style>
     .form-control{
         display:inline !important;
@@ -21,47 +23,35 @@
                 <div class="col-12">
             
                 <div class="box-header with-border pt-5">
-                    <h3 class="box-title"><strong>List of downline(Total:)</strong></h3></div>
+                    <h3 class="box-title"><strong>List of add fund summary (Total:-)</strong></h3></div>
             
             <div class="box-body padding pt-4">
             <div>
-                            <div class='span12'><button class="btn btn-primary mb-3" style="" onclick='selectForm()' >Change Filter</button></div>
-                            <form action="" method ="get" class="form1 from-group" >
-                                <label> Search From</label><br>
-                                <select name="select_type" class="form-control w-25 mb-3" id="select_search" onchange="searchSelect()">
-                                </select>    
-                                <input type="text" name="v" class="form-control w-25" value="" placeholder="Please enter your keyword" required> <br>
-                                <input type="submit"  class="btn btn-primary upper" name="submit" value="Search" > 
-                                <a href="downline.php"><input class="btn btn-primary upper" type="button" name="reset" value="Reset" > </a>
-                            </form>
-                            <script>
-                                function selectForm() {
-                                    jQuery(".form1").toggle();
-                                    jQuery(".form2").toggle();
-                                }
-                            </script>
-                            <form action="" method ="get" class="form2 form-group" >
-                                <label> Search From Date</label> <br>                              
+                          
+    
+                           <form action="" method ="get" class="form1 form-group">
+                                <label> Search From Date</label>   <br>                            
                                 <input type="hidden" name="select_type" value=""> 
                                 <input type="hidden" name="v" id="date" value=""> 
                                 <span> From<input type="text" class="form-control w-25" name="from" id="datepicker"  > </span>
                                 <span> to <input type="text" class="form-control w-25" name="to" id="datepicker1"  > </span><br>
-                                <input type="submit" name="submit" class="btn btn-primary upper mt-3" value="Search" > 
+                                <input type="submit" class="btn btn-primary upper mt-3" name="submit" value="Search" > 
                                 <a href="Users.php"><input type="button" class="btn btn-primary upper mt-3" name="reset" value="Reset" > </a>
                             </form>
                         </div>
+                        
+                     
                         <ul class="pagination">
                                 <li style="">Page </li>
                                 
                             </ul>
                         </div>
-                 
             </div>
         </div> --}}
         <div style="width:100%;">
-      <div class="col-md-12 mt-3">
+      <div class="col-md-12">
         
-                    <h3 class="box-title text-center"><strong>My Downline</strong>
+                    <h3 class="box-title text-center"><strong>List of Team Income (Total:-<?php echo $totalResult; ?>)</strong>
                 </h3>
           
             
@@ -70,29 +60,19 @@
                             <div class="table-responsive">
                             <table id="myTable" class="table table-striped">
                             <thead>
-                                    <tr class="first">
-    
+                                     <tr class="first">
                                         <th>#</th>
-                                        <th>Level</th>
-                                        <th>Name</th>
-                                        <th style="min-width:100px;">User Id</th>
-                                        <th>Sponsor</th>
+                                        <th>Amount</th>
+                                        <th style="min-width:120px;">From user</th>
+                                        <th style="min-width:150px;">From user id</th>
+                                        <th>Type</th>
                                         <th>Date</th>
+                                        <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  @if(!empty($users))
-                                  @foreach($users as $key=>$user)
-                                  <tr>
-                                    <td>{{$users->firstItem()+$key}}</td>
-                                    <td>{{$user->level}}</td>
-                                    <td>{{$user->user->name}}</td>
-                                    <td>{{$user->user_id}}</td>
-                                    <td>{{$user->spid}}</td>
-                                    <td>{{$user->created_at}}</td>
-                                  </tr>
-                                  @endforeach
-                                  @endif
+                                   
+    
     
                                 </tbody>
                             </table>
@@ -117,4 +97,6 @@
             jQuery( ".menu3" ).addClass( "active" );
             
         </script>
+    
+
 @endsection

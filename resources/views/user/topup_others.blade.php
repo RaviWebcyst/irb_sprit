@@ -10,11 +10,9 @@
                         <div class="card-header">
                             <h3 class="card-title">Top up </h3>
                         </div>
-                       
                         <form name="invest" method="post" action="controller/paymentContrroller.php">
                             <h2 class="text-center"></h2>
                             <div class="card-body">
-
                                 <table class="table table-bordered table-hover">
                                     <tbody>
                                         <tr>
@@ -22,7 +20,7 @@
                                             </th>
                                             <td>
                                                 <ul style="list-style-type:none; font-weight:bold;">
-                                                                                                                                                                                                    } ?>
+                                                                                                                                                                                                   
                                                 </ul>
                                             </td>
                                         </tr>
@@ -64,18 +62,17 @@
         </div>
     </section>
 </div>
-<script src="bower_components/jquery/dist/jquery.min.js">
+<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}">
 </script>
 <script>
 function checkSponsor() {
     var uname = document.getElementById("uids").value;
     console.log(uname);
-    var params = "user_id=" + uname;
-    var url = "../../Controller/ajax.php?request=sponser";
+    var params = "id=" + uname;
+    var url = "{{route('checkSp')}}";
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: url,
-        dataType: 'html',
         data: params,
         beforeSend: function() {
             document.getElementById("usernamechk").innerHTML = 'checking';
@@ -83,9 +80,12 @@ function checkSponsor() {
             $('#pay_sponsor').val(uname);
         },
         complete: function() {},
-        success: function(html) {
-            document.getElementById("usernamechk").innerHTML = html;
+        success: function(data) {
+            document.getElementById("usernamechk").innerHTML = data.user_name;
             //                $('#pay_sponsor').val(uname);   
+        },
+        error:function(err){
+            document.getElementById("usernamechk").innerHTML = err.responseJSON.error;
         }
     });
 }

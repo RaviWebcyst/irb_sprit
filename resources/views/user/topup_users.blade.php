@@ -20,7 +20,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row mt-2 text-center">
-                <div class="col-md-12">
+                {{-- <div class="col-md-12">
             
                 <div class="box-header with-border pt-1"><h3 class="box-title"><strong>List of downline (Total:-)</strong></h3></div>
             
@@ -53,15 +53,13 @@
                  
                  
             </div>
-        </div>
+        </div> --}}
         <div style="width:100%; float:left;">
       <p>&nbsp;</p>
       <div class="col-12">
         
-                    <h3 class="box-title"><strong>My Downline</strong>
+                    <h3 class="box-title"><strong>Invest Details</strong>
                 </h3>
-          
-            
             <div class="box-body">
                 <div class="table-responsive">
                             <div class="table-responsive">

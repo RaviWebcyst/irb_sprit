@@ -48,13 +48,13 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-              <a href="{{route('home')}}" class="nav-link">
+              <a href="{{route('home')}}" class="nav-link {{\Request::route()->getName() == 'home'?'active':''}}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>Dashboard</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link  {{(\Request::route()->getName() == 'user.profile'  || \Request::route()->getName() == 'user.edit_profile' || \Request::route()->getName() == 'user.password') ?'active':''}}">
               <i class=" nav-icon fas fa-user"></i>
                 <p>
                   Personal Info
@@ -84,7 +84,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link {{(\Request::route()->getName() == 'user.invest'  || \Request::route()->getName() == 'user.invest_details' ) ?'active':''}}">
               <i class="nav-icon fa-solid fa-chart-area"></i>
                 <p>
                 Activation
@@ -93,13 +93,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="topup-other.php" class="nav-link">
+                  <a href="{{route('user.invest')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Upgrade</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="topup-useres.php" class="nav-link">
+                  <a href="{{route('user.invest_details')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Upgrade detail</p>
                   </a>
@@ -108,7 +108,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link {{(\Request::route()->getName() == 'user.direct_list'  || \Request::route()->getName() == 'user.team_list' ) ?'active':''}}">
               <i class="nav-icon fa-solid fa-people-group"></i>
                 <p>
                 Team Detail
@@ -123,27 +123,27 @@
                   </a>
                 </li> --}}
                 <li class="nav-item">
-                  <a href="introducer.php" class="nav-link">
+                  <a href="{{route('user.direct_list')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>My Referral</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="downline.php" class="nav-link">
+                  <a href="{{route('user.team_list')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Downline</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a href="level.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>View Level</p>
                   </a>
-                </li>
+                </li> --}}
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link {{(\Request::route()->getName() == 'user.direct_bonus'  || \Request::route()->getName() == 'user.transactions' ) ?'active':''}}">
               <i class="nav-icon fa-brands fa-google-wallet"></i>
                 <p>
                  Bonus
@@ -152,19 +152,19 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="direct_bonus.php?type=direct" class="nav-link">
+                  <a href="{{route('user.direct_bonus')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Direct Bonus	</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="direct_bonus.php?type=point_matching" class="nav-link">
+                {{-- <li class="nav-item">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> Point Matching Sponsor	</p>
                   </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
-                  <a href="total_trans.php" class="nav-link">
+                  <a href="{{route('user.transactions')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> All Transaction	</p>
                   </a>
@@ -172,7 +172,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link {{(\Request::route()->getName() == 'user.wallet_details') ?'active':''}}">
               <i class="nav-icon fa-solid fa-pen-to-square"></i>
                 <p>
                 Activation Credits
@@ -181,7 +181,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="nc_wallet_summary.php" class="nav-link">
+                  <a href="{{route('user.wallet_details')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>E-wallet Summary	</p>
                   </a>
@@ -189,7 +189,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link {{(\Request::route()->getName() == 'user.withdraw_details') ?'active':''}}">
               <i class="nav-icon fa-brands fa-google-wallet"></i>
                 <p>
                 Withdraw
@@ -198,15 +198,15 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="withdraw_summmary.php" class="nav-link">
+                  <a href="{{route('user.withdraw_details')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Withdraw Summary 	</p>
+                    <p>Withdraw Summary</p>
                   </a>
                 </li>
               </ul>
             </li>
             <li class="nav-item">
-              <a href="index.php?page=support" class="nav-link">
+              <a href="#" class="nav-link {{(\Request::route()->getName() == 'user.create_ticket'  || \Request::route()->getName() == 'user.tickets') ?'active':''}}">
                 <i class="nav-icon fas fa-handshake"></i>
                 <p>
                   Support
@@ -215,13 +215,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="support.php" class="nav-link">
+                  <a href="{{route('user.create_ticket')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Create New Ticket</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="support_view.php" class="nav-link">
+                  <a href="{{route('user.tickets')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Recent Created Ticket</p>
                   </a>

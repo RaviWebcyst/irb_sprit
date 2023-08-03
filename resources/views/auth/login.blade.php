@@ -89,8 +89,10 @@
                     <div class="text-center  ">
 
                         <a href="{{ route('register') }}" class='text-decoration-none text-dark'>Don't have an account?
-                            <a href="/" class="text-info pt-3">Home</a>
                         </a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                    <a href="/" class="text-dark text-center pt-3">Home</a>
                     </div>
                 </form>
             </div>

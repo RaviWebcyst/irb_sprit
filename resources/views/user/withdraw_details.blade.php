@@ -98,7 +98,7 @@
                         <th>Amount</th>
                         <th>Status</th>
                         <th>Date</th>
-                        <th style="min-width:150px;">Confirm Date</th>
+                        <th style="min-width:150px;">Confirmed Date</th>
                         </tr>
                         </thead>
                         <tbody>

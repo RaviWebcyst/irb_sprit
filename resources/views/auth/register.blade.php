@@ -72,6 +72,8 @@
                     <div class="text-center  ">
 
                          <a href="{{ route('login') }}" class='text-decoration-none text-dark'>Already have an account? </a>
+
+                         <a href="/" class="text-info pt-3">Home</a>
                     </div>
                 </form>
             </div>

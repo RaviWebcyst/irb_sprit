@@ -88,8 +88,8 @@
                     </div>
                     <div class="text-center  ">
 
-                        {{-- <a href="{{ route('password.request') }}">forgotten password</a> --}}
                         <a href="{{ route('register') }}" class='text-decoration-none text-dark'>Don't have an account?
+                            <a href="/" class="text-info pt-3">Home</a>
                         </a>
                     </div>
                 </form>

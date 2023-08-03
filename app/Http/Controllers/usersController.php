@@ -13,6 +13,9 @@ use Auth;
 
 class usersController extends Controller
 {
+    public function showRegisterForm(){
+        return view('auth.register');
+    }
 
     public function register(Request $request){
         $data = $request->all();

@@ -69,7 +69,7 @@
     <!-- Navbar start -->
     <nav class="navbar navbar-expand-lg bg-white sticky-top">
         <div class="container-fluid head_nav">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="{{asset('assets/images/nav_logo.png')}}" alt="nav_logo" class="w-75">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -187,13 +187,13 @@
     <div class="container-fluid mt-5 px-3">
         <div class="row align-items-center">
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/1F..jpg')}}" alt="" class="w-100 rounded-4">
+                <img src="{{asset('assets/images/1F.jpg')}}" alt="" class="w-100 rounded-4">
             </div>
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/2F..jpg')}}" alt="" class="w-100 rounded-4">
+                <img src="{{asset('assets/images/2F.jpg')}}" alt="" class="w-100 rounded-4">
             </div>
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/3F..jpg')}}" alt="" class="w-100 rounded-4">
+                <img src="{{asset('assets/images/3F.jpg')}}" alt="" class="w-100 rounded-4">
             </div>
         </div>
     </div>
@@ -205,10 +205,10 @@
         <h1 class="text-center text-black"><span class="border-bottom border-2 border-success">Our Products</span></h1>
         <div class="row mt-5">
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/Fig-BG..jpg')}}" alt="" class="w-100">
+                <img src="{{asset('assets/images/Fig-BG.jpg')}}" alt="" class="w-100">
             </div>
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/Fig-BG1..jpg')}}" alt="" class="w-100">
+                <img src="{{asset('assets/images/Fig-BG1.jpg')}}" alt="" class="w-100">
             </div>
             <div class="col-sm-4 mb-lg-0 mb-4">
                 <img src="{{asset('assets/images/product_1.png')}}" alt="" class="w-100">
@@ -391,7 +391,7 @@
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
                     <div class="text-center">
-                        <img src="{{asset('assets/images/men_2..jpg')}}" width="100" height="100" class="rounded-4" alt="...">
+                        <img src="{{asset('assets/images/men_2.jpg')}}" width="100" height="100" class="rounded-4" alt="...">
                     </div>
                     <div class="container w-75 text-center mt-5">
                         <h3 class="fw-bold text-black">Michael</h3>
@@ -412,7 +412,7 @@
                 </div>
                 <div class="carousel-item">
                     <div class="text-center">
-                        <img src="{{asset('assets/images/1..jpg')}}" class="rounded-4" width="100" height="100" alt="...">
+                        <img src="{{asset('assets/images/1.jpg')}}" class="rounded-4" width="100" height="100" alt="...">
                     </div>
                     <div class="container w-75 text-center mt-5">
                         <h3 class="fw-bold text-black">Jennifer</h3>

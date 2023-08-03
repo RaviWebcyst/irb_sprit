@@ -62,9 +62,9 @@
                     </div>
                     <div class="text-center  ">
 
-                        {{-- <a href="{{ route('password.request') }}">forgotten password</a> --}}
                         <a href="{{ route('register') }}" class='text-success'>Don't have an account? </a>
                     </div>
+                    <a href="/" class='text-info'>home</a>
                 </form>
             </div>
 

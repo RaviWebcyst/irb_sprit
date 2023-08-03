@@ -508,11 +508,11 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-purple p-2">
+    {{-- <div class="container-fluid bg-purple p-2">
         <p class="text-center text-light pt-3">
             2023 Figwell. All Rights Reserved 2023
         </p>
-    </div>
+    </div> --}}
     <!-- footer end -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

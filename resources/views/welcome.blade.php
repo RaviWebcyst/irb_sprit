@@ -205,10 +205,10 @@
         <h1 class="text-center text-black"><span class="border-bottom border-2 border-success">Our Products</span></h1>
         <div class="row mt-5">
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/Fig-BG.jpg')}}" alt="" class="w-100">
+                <img src="{{asset('assets/images/p1.png')}}" alt="" class="w-100">
             </div>
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/Fig-BG1.jpg')}}" alt="" class="w-100">
+                <img src="{{asset('assets/images/p2.png')}}" alt="" class="w-100">
             </div>
             <div class="col-sm-4 mb-lg-0 mb-4">
                 <img src="{{asset('assets/images/product_1.png')}}" alt="" class="w-100">

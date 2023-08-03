@@ -25,9 +25,7 @@
         background: #683f95 !important;
         border:#683f95 !important;
     }   
-    .text-warning{
-
-    }
+   
 </Style>
 </head>
 

@@ -29,6 +29,15 @@
             box-shadow: 0px 0px 0px 0px !important;
             border: 1px solid black !important
         }
+        .btn-primary{
+            background: #683f95 !important;
+            border:#683f95 !important;
+
+
+
+
+
+        }
     </Style>
 </head>
 

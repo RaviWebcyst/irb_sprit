@@ -16,8 +16,7 @@ class HomeController extends Controller
     {
         $total_users = User::where("is_admin",0)->count();
         $active_users = User::where("is_admin",0)->where("enable",1)->count();
-        $inactive_users = User::where("is_admin",0)->where("enable",0)->count();
-        return view('admin.home',compact("total_users","active_users","inactive_users"));
+        return view('admin.home',compact("total_users","active_users"));
     }
 
     /**

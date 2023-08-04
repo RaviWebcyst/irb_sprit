@@ -30,7 +30,7 @@
                 <div class="col">
                     <div class="card card_height_cstm fw-bold text-center">
                         <div class="card-body box2">
-                            <div class="fs-2">106</div>
+                            <div class="fs-2">{{$total_users}}</div>
                         </div>
                         <div class="card-footer fs-5 box2 text-white">
                             Total User
@@ -40,10 +40,10 @@
                 <div class="col">
                     <div class="card card_height_cstm fw-bold text-center">
                         <div class="card-body box2">
-                            <div class="fs-2">87</div>
+                            <div class="fs-2">{{$active_users}}</div>
                         </div>
                         <div class="card-footer fs-5 box2 text-white">
-                            Active User
+                            Active Users
                         </div>
                     </div>
                 </div>

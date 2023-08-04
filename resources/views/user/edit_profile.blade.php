@@ -59,15 +59,7 @@
                                             value="" />
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label">Country</label>
-                                    <div class="controls">
-                                        <select id="" name="country" class="form-control">
-                                            <option value="0">Select </option>
-                                            <option > </option>
-                                        </select>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="card-footer">
                                 <button type="submit" name="account1" class="btn btn-primary">Submit</button>

@@ -46,13 +46,14 @@
                     <div class="owl-carousel owl-theme">
                         @foreach ($image as $data)
                             <div class="item position-relative">
-                               <img src="{{ asset($data->image) }}" height="150" width="80" alt="" class='' alt='Home Slider Image'>
+                                <img src="{{ asset($data->image) }}" height="150" width="80" alt=""
+                                    class='' alt='Home Slider Image'>
                                 <form action="{{ route('slider-images.destroy', ['slider_image' => $data->id]) }}"
                                     method="POST">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-close text-danger" title="Delete Image"></button>
-</button>
+                                    </button>
                                 </form>
                             </div>
                         @endforeach
@@ -80,8 +81,8 @@
         }
 
         /* .owl-dots{
-                display:none;
-            } */
+                    display:none;
+                } */
         .owl-nav {
             display: none;
         }

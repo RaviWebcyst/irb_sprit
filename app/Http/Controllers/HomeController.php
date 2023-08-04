@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\downline;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -20,10 +23,13 @@ class HomeController extends Controller
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
-     */
+     */ 
     public function index()
     {
-        return view('home');
+      	$users = User::where("spid",Auth::user()->uid)->count();
+      	$teams = downline::where("tagsp",Auth::user()->uid)->count();
+
+        return view('home',compact('users','teams'));
     }
 
     public function loginform() {

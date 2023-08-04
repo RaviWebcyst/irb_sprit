@@ -34,6 +34,8 @@ Route::get('/check_sponser', [App\Http\Controllers\usersController::class, 'chec
 
 
 Auth::routes();
+Route::middleware('auth')->group(function () {
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [App\Http\Controllers\usersController::class, 'profile'])->name('user.profile');
 Route::get('/edit_profile', [App\Http\Controllers\usersController::class, 'edit_profile'])->name('user.edit_profile');
@@ -57,4 +59,6 @@ Route::resource('e-send', ESendController::class);
 Route::resource('support', SupportController::class);
 Route::resource('change-password', ChangePasswordController::class);
 Route::resource('product', ProductController::class);
+});
+
 });

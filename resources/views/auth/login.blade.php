@@ -32,11 +32,6 @@
         .btn-primary{
             background: #683f95 !important;
             border:#683f95 !important;
-
-
-
-
-
         }
     </Style>
 </head>

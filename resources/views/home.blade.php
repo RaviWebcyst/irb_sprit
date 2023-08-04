@@ -107,7 +107,7 @@
                                     <img src="{{asset('users/dist/img/eight.png')}}" class="mb-2" width="50">
                                     <p>TOTAL DIRECT<br>
                                    
-                                    <span class="h4">0</span></p>
+                                    <span class="h4">{{$users}}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
                                     <img src="{{asset('users/dist/img/nine.png')}}" class="mb-2" width="50">
                                     <p>TOTAL TEAM<br>
                                    
-                                    <span class="h4">0</span></p>
+                                    <span class="h4">{{$teams}}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -173,9 +173,9 @@
                     <div class="row">
                         <div class="col-lg-12 pt-3 text-center">
                             <img src="{{asset('users/dist/img/avatar5.png')}}" class="user" width="100">
-                            <h4 class="bold mt-2 text-light">{{Auth::user()->name}}</h4>
-                            <p class="num pb-1">( <strong style="color:#5e1dab;"> {{Auth::user()->uid}})</p>
-                        </div>
+                            <h4 class="bold mt-2 text-light">{{auth()->user()->name}}</h4>
+                            <p class="num pb-1">( <strong style="color:#5e1dab;">{{Auth::user()->uid}})</p>
+                        </div
                     </div>
             </section>
             <!--End-Section 2-->

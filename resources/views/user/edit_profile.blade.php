@@ -76,13 +76,12 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                {{-- <div class="col-lg-6">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Edit Account</h3>
                         </div>
                         <form action="" method="post">
-                            <?php //if(isset($_GET["master_key"])) echo "<div class='flse_msg'>Master Key Eror!</div>";   ?>
 
                             <div class="card-body">
 
@@ -133,9 +132,9 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
-                <div class="row">
+                {{-- <div class="row">
                 <div class="col-lg-6">
                     <div class="card card-primary">
                         <div class="card-header">
@@ -181,7 +180,7 @@
                     </div>
                 </div>
 
- </div>
+ </div> --}}
         </div>
     </section>
 </div>

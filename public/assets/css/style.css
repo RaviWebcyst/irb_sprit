@@ -1,0 +1,119 @@
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+.navbar-toggler {
+  outline: none !important;
+  border: none !important;
+}
+.header_bg {
+  background-image: url(../images/Rectangle\ 1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+}
+.header_img_overlay {
+  width: 20%;
+}
+.header_content {
+  margin-top: 6rem;
+}
+.bg-purple {
+  background-color: #683f95;
+}
+.text-purple {
+  color: #683f95;
+}
+.text-green {
+  color: #a3c744;
+}
+.text-orange {
+  color: #f59333;
+}
+.header_img1_animate {
+  animation: mover 4s infinite alternate;
+}
+.figmal_section {
+  border-left: #683f95 solid;
+  border-width: 15px;
+}
+.figmal_img_1 {
+  border-radius: 40px;
+  box-shadow: 30px 10px #f79333;
+}
+.benefits_bg {
+  background-image: url("../../assets/images/Rectangle\ 14.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.carousel_section_bg {
+  background-image: url("../../assets/images/Rectangle\ 20.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.benefits_content {
+  font-size: 14px;
+}
+.input-group-text {
+  background-color: #683f95 !important;
+}
+@media screen and (min-width: 768px) {
+  .head_nav {
+    padding: 0px 50px !important;
+  }
+  .about_figmal_section {
+    padding: 10px 50px;
+  }
+  .benefits_icons {
+    padding: 15px;
+  }
+}
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(170%);
+  }
+}
+.header_img2_animate {
+  animation: mover2 4s infinite alternate;
+  top: 25rem;
+}
+@keyframes mover2 {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+}
+@media screen and (max-width: 992px) {
+  .badge {
+    font-size: 15px !important;
+  }
+  .header_content {
+    margin-top: 1rem;
+  }
+  @keyframes mover {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(25rem);
+    }
+  }
+  @keyframes mover2 {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-25rem);
+    }
+  }
+
+  .carousel-item {
+    min-height: 600px !important;
+  }
+}

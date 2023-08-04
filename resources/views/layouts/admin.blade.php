@@ -7,8 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Adesh Biotech</title>
     <link rel="shortcut icon" href="{{ asset('users/img/logo.png') }}">
+=======
+    <title>Admin Panel</title>
+    <link rel="shortcut icon" href="{{ asset('users/img/logo.png')}}">
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +35,11 @@
             background-color: #ff9090;
             color: black;
             position: fixed;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
         }
 
         .cstm_style_success {
@@ -47,17 +57,28 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     @php $logo = App\Models\Setting::orderBy('id')->first(); @endphp
     @if (session('error'))
         <div class="alert  alert-dismissible fade show   cstm_style">
             <strong>{{ session('error') }}</strong>
             <button class="btn-close text-light" data-bs-dismiss="alert"></button>
+=======
+    @if (session('error'))
+        <div class="alert  alert-dismissible fade show   cstm_style">
+            <strong>{{ session('error') }}</strong>
+            <button type="button" class="btn-close text-light" data-bs-dismiss="alert"></button>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
         </div>
     @endif
     @if (session('success'))
         <div class="alert  alert-dismissible fade show   cstm_style_success">
             <strong>{{ session('success') }}</strong>
+<<<<<<< HEAD
             <button class="btn-close text-light" data-bs-dismiss="alert"></button>
+=======
+            <button type="button" class="btn-close text-light" data-bs-dismiss="alert"></button>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
         </div>
     @endif
     <div class="sticky-top">
@@ -68,9 +89,14 @@
                     <span class="navbar-toggler-icon text-light"></span>
                 </button>
                 <div class="container">
+<<<<<<< HEAD
                     <a class="navbar-brand" href="{{ route('home.index') }}">
                         <img src="{{ asset($logo->logo) }}"  class="w-50 " >
                     </a>
+=======
+                    <a class="navbar-brand" href="{{ route('home.index') }}"><img
+                            src="{{ asset('users/img/logo.png') }}" width="150 " class=" "></a>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <div class="btn-group dropstart">
@@ -80,6 +106,7 @@
                                         alt="">
                                 </button>
                                 <ul class="dropdown-menu border-0 bg-light">
+<<<<<<< HEAD
                                     <li>
                                         <a class="dropdown-item cstm_hover"
                                             href="{{ route('change-password.index') }}">
@@ -90,6 +117,15 @@
                                         <a class=" dropdown-item   cstm_hover" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="ri-logout-circle-r-line"></i>Logout</a>
+=======
+                                    <li><a class="dropdown-item   cstm_hover "
+                                            href="{{ route('change-password.index') }}"><i
+                                                class="ri-git-repository-private-fill"></i> Change Password</a></li>
+                                    <li>
+                                        <a class=" dropdown-item   cstm_hover" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="ri-logout-circle-line"></i> Logout</a>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
                                             @csrf
@@ -113,8 +149,13 @@
                         <button type="button" class="btn-close border-0 mx-2 fs-5" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
+<<<<<<< HEAD
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0 p-4 p-lg-2 navbar-font ">
                         <li class="nav-item px-3">
+=======
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-4 p-lg-2 navbar-font ">
+                        <li class="nav-item ">
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                             <a class="nav-link active" aria-current="page" href="{{ route('home.index') }}"><i
                                     class="ri-dashboard-line"></i>
                                 Dashboard</a>
@@ -182,9 +223,15 @@
                                 <i class="ri-align-left"></i> Support
                             </a>
                             <ul class="dropdown-menu border-0 bg-light shadow">
+<<<<<<< HEAD
                                 <li><a class="dropdown-item cstm_hover"
                                         href="{{ route('support.index') }}">Support</a></li>
                                 <li><a class="dropdown-item cstm_hover" href="#"> Detils</a></li>
+=======
+                                <li><a class="dropdown-item cstm_hover fs-5"
+                                        href="{{ route('support.index') }}">Support</a></li>
+                                <li><a class="dropdown-item cstm_hover fs-5" href="#"> Detils</a></li>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                             </ul>
                         </li>
                         <li class="nav-item dropdown px-3">
@@ -193,10 +240,16 @@
                                 <i class="ri-settings-2-line"></i>Setting
                             </a>
                             <ul class="dropdown-menu border-0 bg-light shadow">
+<<<<<<< HEAD
                                 <li><a class="dropdown-item cstm_hover"
                                         href="{{ route('slider-images.index') }}">Home Page Slider</a></li>
                                 <li><a class="dropdown-item cstm_hover"
                                         href="{{ route('setting.index') }}">Upload Logo</a></li>
+=======
+                                <li><a class="dropdown-item cstm_hover fs-5"
+                                        href="">Home Page Slider</a></li>
+                                <li><a class="dropdown-item cstm_hover fs-5" href="#"> Detils</a></li>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                             </ul>
                         </li>
 

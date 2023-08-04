@@ -39,7 +39,11 @@
         </div>
     </div> --}}
         <div class="table-responsive">
+<<<<<<< HEAD
             <table class="table table-responsive  mt-5 table-bordered">
+=======
+            <table class="table table-responsive  mt-5">
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                 <thead>
                     <tr>
                         <th>Product Name</th>
@@ -67,7 +71,11 @@
                                 <form action="{{ route('product.destroy', ['product' => $product->id]) }}" method="POST">
                                     @csrf
                                     @method('delete')
+<<<<<<< HEAD
                                     <button type="submit" class="btn btn-danger mx-2"><i class="ri-delete-bin-line"></i>
+=======
+                                    <button type="submit" class="btn btn-danger mx-2"><i class="ri-close-circle-line"></i>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                                     </button>
                                 </form>
                                 <a href="{{ route('product.edit', ['product' => $product->id]) }}"

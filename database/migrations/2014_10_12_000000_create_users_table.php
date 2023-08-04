@@ -17,10 +17,24 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+<<<<<<< HEAD
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('is_admin')->nullable();
 
             $table->string('password');
+=======
+            $table->string('phone')->unique()->nullable();
+            $table->string('uid')->nullable();
+            $table->string('spid')->nullable();
+            $table->string('package')->nullable();
+            $table->bigInteger('enable')->default(0);
+            $table->bigInteger('is_enabled')->default(0);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('is_admin')->nullable();
+            $table->string('password');
+            $table->string('showPass')->nullable();
+            $table->string('paid_date')->nullable();
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
             $table->rememberToken();
             $table->timestamps();
         });

@@ -38,7 +38,11 @@
     </div>
 
     <div class="table table-responsive mt-5">
+<<<<<<< HEAD
         <table class="table table-responsive table-bordered">
+=======
+        <table class="table table-responsive">
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
             <thead>
                 <tr>
                     <th>#</th>

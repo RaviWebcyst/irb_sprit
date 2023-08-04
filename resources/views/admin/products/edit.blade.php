@@ -31,18 +31,27 @@
                             <input type="number" class="form-control" id="saleprice" name="sale_price"   value="{{ $product->sale_price }}">
                         </div>
                         <div class="mb-3">
+<<<<<<< HEAD
                             <label for="image" class="form-label">Main Image</label>
+=======
+                            <label for="image" class="form-label">Product Image</label>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                             <input type="file" class="form-control" id="image" name='main_image'>
 
                         </div>
                         <div class="mb-3">
+<<<<<<< HEAD
                             <label for="image" class="form-label">Gallery Image 1</label>
+=======
+                            <label for="image" class="form-label">Product Image 1</label>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                             <input type="file" class="form-control" id="image" name='image1'>
 
                         </div>
 
 
                         <div class="mb-3">
+<<<<<<< HEAD
                             <label for="image" class="form-label">Gallery Image 2</label>
                             <input type="file" class="form-control" id="image" name='image2'>
                         </div>
@@ -52,6 +61,17 @@
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Gallery Image 4</label>
+=======
+                            <label for="image" class="form-label">Product Image 2</label>
+                            <input type="file" class="form-control" id="image" name='image2'>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Product Image 3</label>
+                            <input type="file" class="form-control" id="image" name='image3'>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Product Image 4</label>
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                             <input type="file" class="form-control" id="image" name='image4'>
                         </div>
 
@@ -98,9 +118,13 @@
                     items: 5
                 }
             }
+<<<<<<< HEAD
         });
 
         </scripr>
+=======
+        })
+>>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
 
 
 @endsection

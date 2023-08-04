@@ -39,7 +39,7 @@
         </div>
     </div> --}}
         <div class="table-responsive">
-            <table class="table table-responsive  mt-5">
+            <table class="table table-responsive  mt-5 table-bordered">
                 <thead>
                     <tr>
                         <th>Product Name</th>
@@ -67,7 +67,7 @@
                                 <form action="{{ route('product.destroy', ['product' => $product->id]) }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger mx-2"><i class="ri-close-circle-line"></i>
+                                    <button type="submit" class="btn btn-danger mx-2"><i class="ri-delete-bin-line"></i>
                                     </button>
                                 </form>
                                 <a href="{{ route('product.edit', ['product' => $product->id]) }}"

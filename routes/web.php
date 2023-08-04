@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\RewardController;
 use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SliderImageController;
+use App\Http\Controllers\Admin\UploadLogoController;
+use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,4 +45,6 @@ Route::resource('support', SupportController::class);
 Route::resource('change-password', ChangePasswordController::class);
 Route::resource('product', ProductController::class);
 Route::resource('slider-images', SliderImageController::class);
+Route::resource('upload-logo', UploadLogoController::class);
+Route::resource('setting', SettingController::class);
 });

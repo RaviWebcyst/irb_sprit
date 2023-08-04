@@ -58,7 +58,7 @@
         </div>
     </div>
     <div class="table table-responsive mt-4">
-        <table class="table table-responsive">
+        <table class="table table-responsive table-bordered">
             <thead>
                 <tr >
                     <th>#</th>

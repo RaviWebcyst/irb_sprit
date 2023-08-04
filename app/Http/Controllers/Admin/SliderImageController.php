@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SliderImage;
 use App\Http\Requests\StoreSliderImageRequest;
 use App\Http\Requests\UpdateSliderImageRequest;
+use Illuminate\Support\Facades\Validator;
 
 class SliderImageController extends Controller
 {
@@ -17,6 +18,9 @@ class SliderImageController extends Controller
     public function index()
     {
         //
+        $images = SliderImage::orderBy('id')->get();
+        // dd($images);
+        return view('admin.setting.banner.index', compact('images'));
     }
 
     /**
@@ -27,6 +31,8 @@ class SliderImageController extends Controller
     public function create()
     {
         //
+        $image = SliderImage::orderby('id')->get();
+        return view('admin.setting.banner.add', compact('image'));
     }
 
     /**
@@ -37,7 +43,35 @@ class SliderImageController extends Controller
      */
     public function store(StoreSliderImageRequest $request)
     {
-        //
+        $rules = [
+            'image' => 'image|mimes:jpeg,png|max:2048',
+
+        ];
+        $validator = Validator::make($request->all(),  [
+            'image' => 'required',
+            'link' => 'required',
+
+        ], $rules);
+
+         if ($validator->fails()) {
+
+            return redirect()->back()->withErrors(['image', 'link' => "Please recheck Your Details"]);
+        }
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = uniqid() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/images'), $name);
+            $path = 'uploads/images/' . $name;
+        }
+
+        SliderImage::insert([
+            'title' => '',
+            'link' => $request->link,
+            'image' => $path,
+
+        ]);
+        return redirect()->route('slider-images.index')->with('success', "Slider Image Added");
     }
 
     /**
@@ -80,8 +114,13 @@ class SliderImageController extends Controller
      * @param  \App\Models\SliderImage  $sliderImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SliderImage $sliderImage)
+    // public function destroy(SliderImage $sliderImage)
+    public function destroy($id)
     {
+
         //
+         SliderImage::find($id)->delete();
+
+        return redirect()->back()->with('success', 'Image  Deleted Successfully');
     }
 }

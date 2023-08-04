@@ -45,14 +45,13 @@ class ProductController extends Controller
     // public function store(StoreProductRequest $request)
     public function store(Request $request)
     {
-        $rules = [
+         $rules = [
             'main_image' => 'image|mimes:jpeg,png|max:2048',
             'gallery1' => 'image|mimes:jpeg,png|max:2048',
             'gallery2' => 'image|mimes:jpeg,png|max:2048',
             'gallery3' => 'image|mimes:jpeg,png|max:2048',
             'gallery4' => 'image|mimes:jpeg,png|max:2048',
         ];
-
         $validator = Validator::make($request->all(),  [
             'product_name' => 'required',
             'product_id' => 'required',
@@ -71,14 +70,14 @@ class ProductController extends Controller
             return redirect()->back()->withErrors($validator)->with('error', 'There were validation errors. Please fix them and try again.');
         }
 
-        if ($request->hasFile('image1')) {
-            $file = $request->file('image1');
+        if ($request->hasFile('gallery1')) {
+            $file = $request->file('gallery1');
             $name1 = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/images'), $name1);
             $path1 = 'uploads/images/' . $name1;
         }
-        if ($request->hasFile('image2')) {
-            $file = $request->file('image2');
+        if ($request->hasFile('gallery2')) {
+            $file = $request->file('gallery2');
             $name2 = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/images'), $name2);
             $path2 = 'uploads/images/' . $name2;
@@ -89,14 +88,14 @@ class ProductController extends Controller
             $file->move(public_path('uploads/images'), $main);
             $mainimage = 'uploads/images/' . $main;
         }
-        if ($request->hasFile('image3')) {
-            $file = $request->file('image3');
+        if ($request->hasFile('gallery3')) {
+            $file = $request->file('gallery3');
             $name3 = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/images'), $name3);
             $path3 = 'uploads/images/' . $name3;
         }
-        if ($request->hasFile('image4')) {
-            $file = $request->file('image4');
+        if ($request->hasFile('gallery4')) {
+            $file = $request->file('gallery4');
             $name4 = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/images'), $name4);
             $path4 = 'uploads/images/' . $name4;
@@ -155,24 +154,6 @@ class ProductController extends Controller
         $imaged = Product::where('id', $product->id)->first();
 
 
-        $validator = Validator::make($request->all(), [
-            'product_name' => 'required',
-            'product_id' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'sale_price' => 'required',
-            'main_image' => 'required',
-            'gallery1' => 'required',
-            'gallery2' => 'required',
-            'gallery3' => 'required',
-            'gallery4' => 'required',
-        ]);
-        // If validation fails, return the errors to the user
-        if ($validator->fails()) {
-
-            return redirect()->back()->withErrors($validator)->with('error', 'There were validation errors. Please fix them and try again.');
-        }
-        // dd($imaged);
         if ($request->hasFile('main_image')) {
             $file = $request->file('main_image');
             $main = uniqid() . '_' . $file->getClientOriginalName();
@@ -182,44 +163,42 @@ class ProductController extends Controller
             $mainimage = $imaged->main_image;
 
         }
-        if ($request->hasFile('image1')) {
-            $file = $request->file('image1');
+        if ($request->hasFile('gallery1')) {
+            $file = $request->file('gallery1');
             $name1 = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/images'), $name1);
             $path1 = 'uploads/images/' . $name1;
         }
         else {
-            $path1 = $imaged->image1;
+            $path1 = $imaged->gallery1;
         }
-        if ($request->hasFile('image2')) {
-            $file = $request->file('image2');
+        if ($request->hasFile('gallery2')) {
+            $file = $request->file('gallery2');
             $name2 = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/images'), $name2);
             $path2 = 'uploads/images/' . $name2;
         }
         else {
-            $path2 = $imaged->image2;
+            $path2 = $imaged->gallery2;
         }
-        if ($request->hasFile('image3')) {
-            $file = $request->file('image3');
+        if ($request->hasFile('gallery3')) {
+            $file = $request->file('gallery3');
             $name3 = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/images'), $name3);
             $path3 = 'uploads/images/' . $name3;
         }
         else {
-            $path3 = $imaged->image3;
+            $path3 = $imaged->gallery3;
         }
-        if ($request->hasFile('image4')) {
-            $file = $request->file('image4');
+        if ($request->hasFile('gallery4')) {
+            $file = $request->file('gallery4');
             $name4 = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('uploads/images'), $name4);
             $path4 = 'uploads/images/' . $name4;
         }
         else {
-            $path4 = $imaged->image4;
+            $path4 = $imaged->gallery4;
         }
-
-            // dd($data);
 
             Product::where('id', $product->id)->update([
             'product_name' => $request->product_name,
@@ -251,8 +230,6 @@ class ProductController extends Controller
     {
         //
         Product::find($id)->delete();
-        // dd($id);
-        //  dd($id);
         return redirect()->back()->with('success', 'Product Deleted Successfully');
     }
 }

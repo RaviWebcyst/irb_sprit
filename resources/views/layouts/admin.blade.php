@@ -69,7 +69,8 @@
                 </button>
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('home.index') }}">
-                        <img src="{{ asset($logo->logo) }}" class="w-50 ">
+                        {{-- <img src="{{ asset($logo->logo) }}" class="w-50 "> --}}
+                        <img src="{{asset('assets/images/nav_logo.png')}}" class="w-50 ">
                     </a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

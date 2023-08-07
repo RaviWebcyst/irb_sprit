@@ -183,34 +183,25 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'sale_price' => $request->sale_price,
-            'main_image' => $mainimage,
-            'gallery1' => $path1,
-            'gallery2' => $path2,
-            'gallery3' => $path3,
-            'gallery4' => $path4,
+            // 'main_image' => $mainimage,
+            // 'gallery1' => $path1,
+            // 'gallery2' => $path2,
+            // 'gallery3' => $path3,
+            // 'gallery4' => $path4,
         ]);
 
-
-Image::where('product_id', $product_product_id)->update({
-    if ($request->hasfile('main_image')) {
-
-        foreach ($request->file('main_image') as $key => $file) {
-
-
-            // $name =  uniqid() . '_' . $file->getClientOriginalName();
-            // $image_name = uniqid() . $key . '.' . $file->getClientOriginalExtension();
+        if ($request->hasfile('main_image')) {
+            foreach ($request->file('main_image') as $key => $file) {
+                $main = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('uploads/images'), $main);
+                $imagePath = 'uploads/images/' . $main;
+                Images::where('product_id', $product->product_id)->update([
+                    'image' =>  $imagePath, 'product_id' => $request->product_id,
 
 
-            // $imagePath = 'uploads/images/' . $image_name;
-            // $file->move(public_path('uploads/images/'), $name);
-            // $file = $request->file('main_image');
-            $main = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $main);
-            $imagePath = 'uploads/images/' . $main;
-            Images::insert(['image' =>  $imagePath, 'product_id' => $request->product_id]);
-        }
-    }
-});
+                ]);
+            }
+        };
 
         return redirect()->route('product.index')->with('success', 'Product Updated Successfully');
     }

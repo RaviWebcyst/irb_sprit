@@ -28,6 +28,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('admin/login', [HomeController::class, 'loginform']);
+Route::post('adminlogincheck', [HomeController::class, 'adminlogin_check'])->name('admin.login.check');
+Route::post('userlogincheck', [HomeController::class, 'userlogin_check'])->name('user.login.check');
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -75,6 +84,18 @@ Route::get('/transactions', [App\Http\Controllers\usersController::class, 'trans
 Route::get('/withdraw_details', [App\Http\Controllers\usersController::class, 'withdraw_details'])->name('user.withdraw_details');
 
 Route::prefix('admin')->middleware('is_admin')->group(function () {
+    Route::resource('home', AdminHomeController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('reward', RewardController::class);
+    Route::resource('e-send', ESendController::class);
+    Route::resource('support', SupportController::class);
+    Route::resource('change-password', ChangePasswordController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('slider-images', SliderImageController::class);
+    Route::resource('upload-logo', UploadLogoController::class);
+    Route::resource('setting', SettingController::class);
+    Route::resource('news', NewsController::class);
+    Route::resource('level-chart', LevelChartController::class);
 Route::resource('home', AdminHomeController::class);
 Route::resource('users', UserController::class);
 Route::resource('reward', RewardController::class);

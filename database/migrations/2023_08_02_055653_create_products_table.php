@@ -23,11 +23,11 @@ class CreateProductsTable extends Migration
             $table->double('sale_price');
             $table->double('quantity')->default(0);
             $table->integer('status')->default(1);
-            $table->string('main_image');
-            $table->string('gallery1');
-            $table->string('gallery2');
-            $table->string('gallery3');
-            $table->string('gallery4');
+            $table->string('main_image')->nullable();
+            $table->string('gallery1')->nullable();
+            $table->string('gallery2')->nullable();
+            $table->string('gallery3')->nullable();
+            $table->string('gallery4')->nullable();
             $table->timestamps();
         });
     }

@@ -39,9 +39,10 @@
         </div>
     </div> --}}
         <div class="table-responsive">
-            <table class="table table-responsive  mt-5">
+            <table class="table table-responsive  mt-5 table-bordered">
                 <thead>
                     <tr>
+                        <td>#</td>
                         <th>Product Name</th>
                         <th>Product Id</th>
                         <th>Price</th>
@@ -52,22 +53,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
-                        <tr>
+
+                    @foreach ($products as $key=>$product)
+                    <tr>
+                        <td>{{ $key + 1}}</td>
                             <td>{{ $product->product_name }}</td>
                             <td>{{ $product->product_id }}</td>
                             <td><del>{{ $product->price }}</del></td>
-                             <td>{{ $product->sale_price }}</td>
+                            <td>{{ $product->sale_price }}</td>
                             <td>
-                                <img src="{{ asset($product->main_image) }}" height="50" width="100" alt="Product Image">
-                            </td>
-
+                                <img src="{{ asset( $product->image ) }}" height="50" width="100" alt="Product Image">
+                              </td>
                             <td>
                                 <div class='d-flex'>
                                 <form action="{{ route('product.destroy', ['product' => $product->id]) }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger mx-2"><i class="ri-close-circle-line"></i>
+                                    <button type="submit" class="btn btn-danger mx-2"><i class="ri-delete-bin-line"></i>
                                     </button>
                                 </form>
                                 <a href="{{ route('product.edit', ['product' => $product->id]) }}"
@@ -79,6 +81,8 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="pagination">
+             </div>
         </div>
     </div>
 @endsection

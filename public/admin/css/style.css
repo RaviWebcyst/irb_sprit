@@ -13,7 +13,18 @@
 /* .dropdown:hover .dropdown-menu {
     display: block;
   } */
+.cstm_btn{
+    background-color:#bee3f8 !important;
+}
+.cstm_form_header{
+    background-color: #bee3f8 !important;
+    /* color:white; */
 
+}
+.cstm_form_body {
+    background-color:#bee3f8 !important;
+
+}
 
 .dashboard_box {
     padding: 1.25rem;
@@ -21,17 +32,20 @@
 .navbar-font{
     font-size: 19px;
 }
- 
- 
+
+
 .card-body.box2 {
     background-color: #bee3f8 !important;
 }
- 
+
 .box2{
-    
+
     background-color: #009efb !important;
 }
- 
+
+.form-control:focus {
+    box-shadow: 0 0 0 0 black !important;
+}
 
 .head_img {
     width: 50px;
@@ -50,7 +64,6 @@
 @media screen and (min-width: 992px) {
     .mobile-responsive {
         width: 500px !important;
-     
     }
 }
 .td-width {

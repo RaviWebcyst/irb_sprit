@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -15,9 +14,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $total_users = User::where("is_admin",0)->count();
-        $active_users = User::where("is_admin",0)->where("enable",1)->count();
-        return view('admin.home',compact("total_users","active_users"));
+        //
+        return view('admin.home');
     }
 
     

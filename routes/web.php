@@ -1,12 +1,19 @@
 <?php
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\ESendController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\LavelChartController;
+use App\Http\Controllers\Admin\LevelChartController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\RewardController;
 use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SliderImageController;
+use App\Http\Controllers\Admin\UploadLogoController;
+use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,11 +28,22 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('admin/login', [HomeController::class, 'loginform']);
+Route::post('adminlogincheck', [HomeController::class, 'adminlogin_check'])->name('admin.login.check');
+Route::post('userlogincheck', [HomeController::class, 'userlogin_check'])->name('user.login.check');
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('admin/login', [HomeController::class, 'loginform']);
 
- Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/products',[App\Http\Controllers\frontController::class, 'products'])->name('products');
@@ -57,7 +75,6 @@ Route::get('/change_pass', [App\Http\Controllers\usersController::class, 'passwo
 Route::get('/team_list', [App\Http\Controllers\usersController::class, 'team_list'])->name('user.team_list');
 Route::get('/direct_list', [App\Http\Controllers\usersController::class, 'direct_list'])->name('user.direct_list');
 Route::get('/invest', [App\Http\Controllers\usersController::class, 'invest'])->name('user.invest');
-Route::post('/store_invest', [App\Http\Controllers\usersController::class, 'store_invest'])->name('invest.store');
 Route::get('/invest_details', [App\Http\Controllers\usersController::class, 'invest_details'])->name('user.invest_details');
 Route::get('/tickets', [App\Http\Controllers\usersController::class, 'tickets'])->name('user.tickets');
 Route::get('/create_ticket', [App\Http\Controllers\usersController::class, 'create_ticket'])->name('user.create_ticket');

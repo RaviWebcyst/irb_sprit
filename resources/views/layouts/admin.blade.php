@@ -7,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Adesh Biotech">
-
-    <title>Admin Panel</title>
-    <link rel="shortcut icon" href="{{ asset('users/img/logo.png')}}">
+    <title>Adesh Biotech</title>
+    <link rel="shortcut icon" href="{{ asset('users/img/logo.png') }}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,8 +30,6 @@
             background-color: #ff9090;
             color: black;
             position: fixed;
-
-
         }
 
         .cstm_style_success {
@@ -51,16 +47,17 @@
 </head>
 
 <body>
+    @php $logo = App\Models\Setting::orderBy('id')->first(); @endphp
     @if (session('error'))
         <div class="alert  alert-dismissible fade show   cstm_style">
             <strong>{{ session('error') }}</strong>
-            <button type="button" class="btn-close text-light" data-bs-dismiss="alert"></button>
+            <a class=" text-decoration-none fs-4 " data-bs-dismiss="alert"><i class="ri-close-line text-dark"></i></a>
         </div>
     @endif
     @if (session('success'))
         <div class="alert  alert-dismissible fade show   cstm_style_success">
-            <strong>{{ session('success') }}</strong>
-            <button type="button" class="btn-close text-light" data-bs-dismiss="alert"></button>
+            <strong class='fs-5'>{{ session('success') }}</strong>
+            <a class=" text-decoration-none fs-4 " data-bs-dismiss="alert"><i class="ri-close-line text-dark"></i></a>
         </div>
     @endif
     <div class="sticky-top">
@@ -71,8 +68,9 @@
                     <span class="navbar-toggler-icon text-light"></span>
                 </button>
                 <div class="container">
-                    <a class="navbar-brand" href="{{ route('home.index') }}"><img
-                            src="{{ asset('users/img/logo.png') }}" width="150 " class=" "></a>
+                    <a class="navbar-brand" href="{{ route('home.index') }}">
+                        <img src="{{ asset($logo->logo) }}" class="w-50 ">
+                    </a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <div class="btn-group dropstart">
@@ -82,13 +80,16 @@
                                         alt="">
                                 </button>
                                 <ul class="dropdown-menu border-0 bg-light">
-                                    <li><a class="dropdown-item   cstm_hover "
-                                            href="{{ route('change-password.index') }}"><i
-                                                class="ri-git-repository-private-fill"></i> Change Password</a></li>
+                                    <li>
+                                        <a class="dropdown-item cstm_hover"
+                                            href="{{ route('change-password.index') }}">
+                                            <i class="ri-git-repository-private-fill"></i> Change Password
+                                        </a>
+                                    </li>
                                     <li>
                                         <a class=" dropdown-item   cstm_hover" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="ri-logout-circle-line"></i> Logout</a>
+                                            <i class="ri-logout-circle-r-line"></i>Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">
                                             @csrf
@@ -112,8 +113,8 @@
                         <button type="button" class="btn-close border-0 mx-2 fs-5" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-4 p-lg-2 navbar-font ">
-                        <li class="nav-item ">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 p-4 p-lg-2 navbar-font ">
+                        <li class="nav-item px-3">
                             <a class="nav-link active" aria-current="page" href="{{ route('home.index') }}"><i
                                     class="ri-dashboard-line"></i>
                                 Dashboard</a>
@@ -181,9 +182,9 @@
                                 <i class="ri-align-left"></i> Support
                             </a>
                             <ul class="dropdown-menu border-0 bg-light shadow">
-                                <li><a class="dropdown-item cstm_hover fs-5"
+                                <li><a class="dropdown-item cstm_hover"
                                         href="{{ route('support.index') }}">Support</a></li>
-                                <li><a class="dropdown-item cstm_hover fs-5" href="#"> Detils</a></li>
+                                <li><a class="dropdown-item cstm_hover" href="#"> Details</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown px-3">
@@ -192,11 +193,25 @@
                                 <i class="ri-settings-2-line"></i>Setting
                             </a>
                             <ul class="dropdown-menu border-0 bg-light shadow">
-                                <li><a class="dropdown-item cstm_hover fs-5"
-                                        href="">Home Page Slider</a></li>
-                                <li><a class="dropdown-item cstm_hover fs-5" href="#"> Detils</a></li>
+                                <li><a class="dropdown-item cstm_hover"
+                                        href="{{ route('slider-images.index') }}">Home Page Slider</a></li>
+                                <li><a class="dropdown-item cstm_hover" href="{{ route('setting.index') }}">Upload
+                                        Logo</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown px-3">
+                            <a class="nav-link  " href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="ri-align-left"></i> Other
+                            </a>
+                            <ul class="dropdown-menu border-0 bg-light shadow">
+                                <li><a class="dropdown-item cstm_hover" href="{{ route('news.index') }}">News</a>
+                                </li>
+                                <li><a class="dropdown-item cstm_hover" href="{{ route('level-chart.index') }}">
+                                        Level chart</a></li>
+                            </ul>
+                        </li>
+
 
                     </ul>
                 </div>

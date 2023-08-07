@@ -67,7 +67,7 @@
                                     <strong>{{ session('error') }}</strong>
                                 </div>
                             @endif
-                            <form method="POST" action="{{ route('admin.login.check') }}">
+                            <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
                                 <div class="row mb-3">

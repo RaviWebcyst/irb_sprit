@@ -1,5 +1,5 @@
 @extends('layouts.front_app')
-  @section('content')
+  @section('content') 
 
     <!-- header start -->
     <div class="container-fluid header_bg pb-5">
@@ -489,5 +489,5 @@
             </div>
         </div>
     </div>
-
+    
 @endsection

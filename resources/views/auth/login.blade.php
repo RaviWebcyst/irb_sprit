@@ -29,6 +29,10 @@
             box-shadow: 0px 0px 0px 0px !important;
             border: 1px solid black !important
         }
+        .btn-primary{
+            background: #683f95 !important;
+            border:#683f95 !important;
+        }
     </Style>
 </head>
 
@@ -46,7 +50,7 @@
                         <strong>{{ session('error') }}</strong>
                     </div>
                 @endif
-                <form method="POST" action="{{ route('user.login.check') }}">
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
 
                     <div class=" mb-3">
@@ -88,9 +92,11 @@
                     </div>
                     <div class="text-center  ">
 
-                        {{-- <a href="{{ route('password.request') }}">forgotten password</a> --}}
                         <a href="{{ route('register') }}" class='text-decoration-none text-dark'>Don't have an account?
                         </a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                    <a href="/" class="text-dark text-center pt-3">Home</a>
                     </div>
                 </form>
             </div>

@@ -19,12 +19,15 @@ class CreateUsersSeeder extends Seeder
                'name'=>'admin',
                'email'=>'admin@gmail.com',
                 'is_admin'=>'1',
+                'uid'=>'admin',
                'password'=> bcrypt('admin'),
             ],
             [
                'name'=>'user',
                'email'=>'user@gmail.com',
                 'is_admin'=>'0',
+                "spid"=>'admin',
+                "uid"=>'AB12345',
                'password'=> bcrypt('11'),
             ],
         ];

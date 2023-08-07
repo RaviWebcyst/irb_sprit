@@ -29,13 +29,6 @@
             box-shadow: 0px 0px 0px 0px !important;
             border: 1px solid black !important
         }
-<<<<<<< HEAD
-=======
-        .btn-primary{
-            background: #683f95 !important;
-            border:#683f95 !important;
-        }
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
     </Style>
 </head>
 
@@ -53,11 +46,7 @@
                         <strong>{{ session('error') }}</strong>
                     </div>
                 @endif
-<<<<<<< HEAD
                 <form method="POST" action="{{ route('user.login.check') }}">
-=======
-                <form method="POST" action="{{ route('login') }}">
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                     @csrf
 
                     <div class=" mb-3">
@@ -99,19 +88,10 @@
                     </div>
                     <div class="text-center  ">
 
-<<<<<<< HEAD
                         {{-- <a href="{{ route('password.request') }}">forgotten password</a> --}}
                         <a href="{{ route('register') }}" class='text-decoration-none text-dark'>Don't have an account?
                         </a>
                     </div>
-=======
-                        <a href="{{ route('register') }}" class='text-decoration-none text-dark'>Don't have an account?
-                        </a>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                    <a href="/" class="text-dark text-center pt-3">Home</a>
-                    </div>
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
                 </form>
             </div>
 

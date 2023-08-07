@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Product;
+use App\Models\Images;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -22,7 +23,16 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderBy('id')->get();
-        return view('admin.products.index', compact('products'));
+
+        $products->map(function ($data) {
+            $details = Images::where('product_id', $data->product_id)->orderBy('id', 'desc')->first();
+            // dd($details);
+            $data->image = $details->image;
+
+            return $data;
+        });
+
+        return view('admin.products.index')->with('products', $products);
     }
 
     /**
@@ -45,89 +55,30 @@ class ProductController extends Controller
     // public function store(StoreProductRequest $request)
     public function store(Request $request)
     {
-<<<<<<< HEAD
-         $rules = [
-=======
-        $rules = [
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            'main_image' => 'image|mimes:jpeg,png|max:2048',
-            'gallery1' => 'image|mimes:jpeg,png|max:2048',
-            'gallery2' => 'image|mimes:jpeg,png|max:2048',
-            'gallery3' => 'image|mimes:jpeg,png|max:2048',
-            'gallery4' => 'image|mimes:jpeg,png|max:2048',
-        ];
-<<<<<<< HEAD
-=======
 
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
+        // dd($rules);
         $validator = Validator::make($request->all(),  [
             'product_name' => 'required',
             'product_id' => 'required',
             'description' => 'required',
             'price' => 'required',
             'sale_price' => 'required',
-            'main_image' => 'required',
-            'gallery1' => 'required',
-            'gallery2' => 'required',
-            'gallery3' => 'required',
-            'gallery4' => 'required',
-        ], $rules);
+            'main_image' => 'required ',
+
+        ]);
         // If validation fails, return the errors to the user
         if ($validator->fails()) {
 
             return redirect()->back()->withErrors($validator)->with('error', 'There were validation errors. Please fix them and try again.');
         }
 
-<<<<<<< HEAD
-        if ($request->hasFile('gallery1')) {
-            $file = $request->file('gallery1');
-=======
-        if ($request->hasFile('image1')) {
-            $file = $request->file('image1');
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            $name1 = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $name1);
-            $path1 = 'uploads/images/' . $name1;
-        }
-<<<<<<< HEAD
-        if ($request->hasFile('gallery2')) {
-            $file = $request->file('gallery2');
-=======
-        if ($request->hasFile('image2')) {
-            $file = $request->file('image2');
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            $name2 = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $name2);
-            $path2 = 'uploads/images/' . $name2;
-        }
-        if ($request->hasFile('main_image')) {
-            $file = $request->file('main_image');
-            $main = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $main);
-            $mainimage = 'uploads/images/' . $main;
-        }
-<<<<<<< HEAD
-        if ($request->hasFile('gallery3')) {
-            $file = $request->file('gallery3');
-=======
-        if ($request->hasFile('image3')) {
-            $file = $request->file('image3');
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            $name3 = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $name3);
-            $path3 = 'uploads/images/' . $name3;
-        }
-<<<<<<< HEAD
-        if ($request->hasFile('gallery4')) {
-            $file = $request->file('gallery4');
-=======
-        if ($request->hasFile('image4')) {
-            $file = $request->file('image4');
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            $name4 = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $name4);
-            $path4 = 'uploads/images/' . $name4;
-        }
+        // foreach ($request->file('main_image') as $file) {
+        //     $name =  uniqid() . '_' . $file->getClientOriginalName();
+        //     //     $name4 = uniqid() . '_' . $file->getClientOriginalName();
+
+        //     $file->move(public_path('uploads/images'), $name);
+        //     $imageNames[]  = $name;
+        // }
         Product::insert([
             'product_name' => $request->product_name,
             'product_id' => $request->product_id,
@@ -135,12 +86,26 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'sale_price' => $request->sale_price,
-            'main_image' => $mainimage,
-            'gallery1' => $path1,
-            'gallery2' => $path2,
-            'gallery3' => $path3,
-            'gallery4' => $path4,
+
         ]);
+        if ($request->hasfile('main_image')) {
+
+            foreach ($request->file('main_image') as $key => $file) {
+
+
+                // $name =  uniqid() . '_' . $file->getClientOriginalName();
+                // $image_name = uniqid() . $key . '.' . $file->getClientOriginalExtension();
+
+
+                // $imagePath = 'uploads/images/' . $image_name;
+                // $file->move(public_path('uploads/images/'), $name);
+                // $file = $request->file('main_image');
+                $main = uniqid() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('uploads/images'), $main);
+                $imagePath = 'uploads/images/' . $main;
+                Images::insert(['image' =>  $imagePath, 'product_id' => $request->product_id]);
+            }
+        }
         // return redirect()->back()->with('success', 'Product Added Successfully');
         return redirect()->route('product.index')->with('success', 'Product Added Successfully');
     }
@@ -179,111 +144,39 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         //
-        $imaged = Product::where('id', $product->id)->first();
 
+        $validator = Validator::make($request->all(),  [
 
-<<<<<<< HEAD
-=======
-        $validator = Validator::make($request->all(), [
-            'product_name' => 'required',
-            'product_id' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'sale_price' => 'required',
-            'main_image' => 'required',
-            'gallery1' => 'required',
-            'gallery2' => 'required',
-            'gallery3' => 'required',
-            'gallery4' => 'required',
+            'main_image' => 'mimes:jpeg,png,jpg|max:2048',
+            'gallery1' => 'mimes:jpeg,png,jpg|max:2048',
+            'gallery2' => 'mimes:jpeg,png,jpg|max:2048',
+            'gallery3' => 'mimes:jpeg,png,jpg|max:2048',
+            'gallery4' => 'mimes:jpeg,png,jpg|max:2048',
         ]);
         // If validation fails, return the errors to the user
         if ($validator->fails()) {
 
-            return redirect()->back()->withErrors($validator)->with('error', 'There were validation errors. Please fix them and try again.');
+            return redirect()->back()->withErrors($validator)->with('error', 'Only JPG, JPEG & PNG files are allowed.');
         }
-        // dd($imaged);
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-        if ($request->hasFile('main_image')) {
-            $file = $request->file('main_image');
-            $main = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $main);
-            $mainimage = 'uploads/images/' . $main;
-        }else{
-            $mainimage = $imaged->main_image;
+        $imaged = Product::where('id', $product->id)->first();
 
-        }
-<<<<<<< HEAD
-        if ($request->hasFile('gallery1')) {
-            $file = $request->file('gallery1');
-=======
-        if ($request->hasFile('image1')) {
-            $file = $request->file('image1');
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            $name1 = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $name1);
-            $path1 = 'uploads/images/' . $name1;
-        }
-        else {
-<<<<<<< HEAD
-            $path1 = $imaged->gallery1;
-        }
-        if ($request->hasFile('gallery2')) {
-            $file = $request->file('gallery2');
-=======
-            $path1 = $imaged->image1;
-        }
-        if ($request->hasFile('image2')) {
-            $file = $request->file('image2');
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            $name2 = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $name2);
-            $path2 = 'uploads/images/' . $name2;
-        }
-        else {
-<<<<<<< HEAD
-            $path2 = $imaged->gallery2;
-        }
-        if ($request->hasFile('gallery3')) {
-            $file = $request->file('gallery3');
-=======
-            $path2 = $imaged->image2;
-        }
-        if ($request->hasFile('image3')) {
-            $file = $request->file('image3');
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            $name3 = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $name3);
-            $path3 = 'uploads/images/' . $name3;
-        }
-        else {
-<<<<<<< HEAD
-            $path3 = $imaged->gallery3;
-        }
-        if ($request->hasFile('gallery4')) {
-            $file = $request->file('gallery4');
-=======
-            $path3 = $imaged->image3;
-        }
-        if ($request->hasFile('image4')) {
-            $file = $request->file('image4');
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            $name4 = uniqid() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/images'), $name4);
-            $path4 = 'uploads/images/' . $name4;
-        }
-        else {
-<<<<<<< HEAD
-            $path4 = $imaged->gallery4;
+        $image_paths = [
+            $imaged->main_image,
+            $imaged->gallery1,
+            $imaged->gallery2,
+            $imaged->gallery3,
+            $imaged->gallery4,
+        ];
+        // dd($image_paths);
+        foreach ($image_paths as $image_path) {
+            if (file_exists($image_path)) {
+                @unlink($image_path);
+            }
         }
 
-=======
-            $path4 = $imaged->image4;
-        }
 
-            // dd($data);
 
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
-            Product::where('id', $product->id)->update([
+        Product::where('id', $product->id)->update([
             'product_name' => $request->product_name,
             'product_id' => $request->product_id,
             'product_title' => $request->description,
@@ -298,7 +191,26 @@ class ProductController extends Controller
         ]);
 
 
+Image::where('product_id', $product_product_id)->update({
+    if ($request->hasfile('main_image')) {
 
+        foreach ($request->file('main_image') as $key => $file) {
+
+
+            // $name =  uniqid() . '_' . $file->getClientOriginalName();
+            // $image_name = uniqid() . $key . '.' . $file->getClientOriginalExtension();
+
+
+            // $imagePath = 'uploads/images/' . $image_name;
+            // $file->move(public_path('uploads/images/'), $name);
+            // $file = $request->file('main_image');
+            $main = uniqid() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/images'), $main);
+            $imagePath = 'uploads/images/' . $main;
+            Images::insert(['image' =>  $imagePath, 'product_id' => $request->product_id]);
+        }
+    }
+});
 
         return redirect()->route('product.index')->with('success', 'Product Updated Successfully');
     }
@@ -311,13 +223,56 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
-        Product::find($id)->delete();
-<<<<<<< HEAD
-=======
         // dd($id);
-        //  dd($id);
->>>>>>> 2176a109c70b61d8e7618e17d75440b582ce73ee
+        //
+        $image = Product::where('id', $id)->first();
+
+        // $product_image = Images::where('product_id', $image->product_id)->get();
+        $product_image = Images::where('product_id', $image->product_id)->pluck('image')->toArray();
+        Product::find($id)->delete();
+        foreach ($product_image as $image_path) {
+            if (file_exists($image_path)) {
+                @unlink($image_path);
+            }
+        }
+
+        if (file_exists($image_path)) {
+
+            @unlink($image_path);
+        }
+
         return redirect()->back()->with('success', 'Product Deleted Successfully');
     }
 }
+
+
+
+
+
+// if($request->hasfile('main_image'))
+//         {
+//             // $imageNames = [];
+//              foreach($request->file('main_image') as $file)
+//             {
+//                 $name =  uniqid() . '_' . $file->getClientOriginalName();
+//         //     $name4 = uniqid() . '_' . $file->getClientOriginalName();
+
+//                 $file->move(public_path('uploads/images'), $name);
+//                 $imageNames[]  = $name;
+//             }
+// // dd($imageNames);
+//             $product = new Product();
+//             $product->main_image = json_encode($imageNames);
+//             // Set other product attributes
+//             $product->product_name = ' ';
+//             $product->product_id = ' ';
+//             $product->product_title = '';
+//             $product->description = '';
+//             $product->price = 22;
+//             $product->sale_price = 22;
+//             $product->gallery1 = '';
+//             $product->gallery2 = '';
+//             $product->gallery3 = '';
+//             $product->gallery4 = '';
+//             $product->save();
+//         }

@@ -41,7 +41,7 @@
                     </form>
                 </div>
                 {{-- <h4>All Slider</h4> --}}
-                <div class="row mt-4">
+                {{-- <div class="row mt-4">
                     <h3>Slider Image</h3>
                     <div class="owl-carousel owl-theme">
                         @foreach ($image as $data)
@@ -58,10 +58,34 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
+                <div>
+                <img id="imagePreview" src="#" alt="Image Preview" style="display: none; max-width: 100%;">
+            </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('image').addEventListener('change', function(event) {
+            const image = event.target.files[0];
+            const imagePreview = document.getElementById('imagePreview');
+
+            if (image) {
+                imagePreview.style.display = 'block';
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                }
+
+                reader.readAsDataURL(image);
+            } else {
+                imagePreview.style.display = 'none';
+                imagePreview.src = '#';
+            }
+        });
+    </script>
     <style>
         .item {
             position: relative;
@@ -87,7 +111,7 @@
             display: none;
         }
     </style>
-    <script>
+    {{-- <script>
         $('.owl-carousel').owlCarousel({
             loop: false,
             margin: 10,
@@ -106,5 +130,5 @@
                 }
             }
         });
-    </script>
+    </script> --}}
 @endsection

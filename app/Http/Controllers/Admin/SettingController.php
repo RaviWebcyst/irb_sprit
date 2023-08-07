@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
@@ -40,8 +40,12 @@ class SettingController extends Controller
      */
     public function store(StoreSettingRequest $request)
     {
+        $image = Setting::orderBy('id')->first();
+
+
         $array = [
             'address' => $request->address,
+            'logo' => $image->images,
 
         ];
         if ($request->hasFile('logo')) {
@@ -72,6 +76,16 @@ class SettingController extends Controller
 
             $array['logo'] = $imageFileType;
 
+        }
+
+        $image = Setting::orderBy('id')->first();
+
+
+        $image_path = $image->logo;
+        //  dd($image_path);
+         if (file_exists($image_path)) {
+
+            @unlink($image_path);
 
         }
         Setting::orderBy('id')->update($array);

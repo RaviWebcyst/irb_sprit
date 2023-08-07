@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use File;
 
 use App\Models\SliderImage;
 use App\Http\Requests\StoreSliderImageRequest;
@@ -117,9 +118,17 @@ class SliderImageController extends Controller
     // public function destroy(SliderImage $sliderImage)
     public function destroy($id)
     {
+         //
+         $image = SliderImage::where('id', $id)->first();
+        //  dd($image);
+         $image_path = $image->image;
+         if (file_exists($image_path)) {
 
-        //
+            @unlink($image_path);
+
+        }
          SliderImage::find($id)->delete();
+
 
         return redirect()->back()->with('success', 'Image  Deleted Successfully');
     }

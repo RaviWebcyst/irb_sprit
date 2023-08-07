@@ -56,9 +56,9 @@
                     <div class=" mb-3">
                         <label for="email" class="form-label">Email Address</label>
 
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                        <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
-                            placeholder="Enter Email">
+                            placeholder="Enter Email Or UID">
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">

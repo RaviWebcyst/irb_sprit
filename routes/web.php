@@ -28,6 +28,20 @@ Route::get('admin/login', [HomeController::class, 'loginform']);
  Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/products',[App\Http\Controllers\frontController::class, 'products'])->name('products');
+Route::get('/gallery', function () {
+    return view('gallery');
+})->name('gallery');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+Route::get('/branch', function () {
+    return view('branch');
+})->name('branch');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Route::post('/user_register', [App\Http\Controllers\usersController::class, 'register'])->name('user.register');
 Route::get('/thankyou', [App\Http\Controllers\usersController::class, 'thankyou'])->name('register.thankyou');
 Route::get('/check_sponser', [App\Http\Controllers\usersController::class, 'check_sponser'])->name('checkSp');
@@ -43,6 +57,7 @@ Route::get('/change_pass', [App\Http\Controllers\usersController::class, 'passwo
 Route::get('/team_list', [App\Http\Controllers\usersController::class, 'team_list'])->name('user.team_list');
 Route::get('/direct_list', [App\Http\Controllers\usersController::class, 'direct_list'])->name('user.direct_list');
 Route::get('/invest', [App\Http\Controllers\usersController::class, 'invest'])->name('user.invest');
+Route::post('/store_invest', [App\Http\Controllers\usersController::class, 'store_invest'])->name('invest.store');
 Route::get('/invest_details', [App\Http\Controllers\usersController::class, 'invest_details'])->name('user.invest_details');
 Route::get('/tickets', [App\Http\Controllers\usersController::class, 'tickets'])->name('user.tickets');
 Route::get('/create_ticket', [App\Http\Controllers\usersController::class, 'create_ticket'])->name('user.create_ticket');

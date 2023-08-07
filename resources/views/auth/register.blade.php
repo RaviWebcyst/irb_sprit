@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
@@ -49,7 +49,7 @@
                     <div class="mb-3">
                         <label for="spid" class="form-label">Sponser Id</label>
                         <input type="text" class="form-control " name="spid" id="spid" onchange="checkSp(this.value)"
-                            placeholder="Enter Sponser Id">
+                            placeholder="Enter Sponser Id" value="{{Request()->spid}}">
                         <div class="text-danger err"></div>
                         <div class="text-success succ"></div>
                             @error('spid')

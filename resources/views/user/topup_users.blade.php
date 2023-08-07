@@ -66,17 +66,24 @@
                             <table id="myTable" class="table table-striped">
                                 <thead>
                                     <tr class="first">
-    
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th style="min-width:120px;">User id</th>
-                                        <th>Sponsor</th>
+                                         <th>Amount</th>
                                         <th>Date</th>
                                     </tr>
                                 </thead>
+                                @if(!empty($history))
                                 <tbody>
-                                    
+                                    @foreach ($history as $key=>$his)
+                                        <tr>
+                                            <td>{{$history->firstItem()+$key}}</td>
+                                            <td>{{$his->amount}}</td>
+                                            <td>{{$his->created_at}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                @endif
                             </table>
+                            {{$history->links()}}
                         </div>
                         </div>
                  

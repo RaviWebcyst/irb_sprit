@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -12,10 +13,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        return view('admin.users');
+       $users= User::where("is_admin",0)->when($request->active,function($q) use($request){
+            $q->where("enable",1);
+       })->orderBy('id',"desc")->paginate(50);
+        return view('admin.users',compact('users'));
     }
 
     /**

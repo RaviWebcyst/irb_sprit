@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Adesh Biotech">
+
     <title>Admin Panel</title>
     <link rel="shortcut icon" href="{{ asset('users/img/logo.png')}}">
 
@@ -122,9 +124,9 @@
                                 <i class="ri-user-fill"></i> Users
                             </a>
                             <ul class="dropdown-menu border-0 bg-light shadow ">
-                                <li><a class="dropdown-item cstm_hover " href="{{ route('users.index') }}">users</a>
+                                <li><a class="dropdown-item cstm_hover " href="{{ route('users.index') }}">All Users</a>
                                 </li>
-                                <li><a class="dropdown-item cstm_hover" href="#">users</a></li>
+                                <li><a class="dropdown-item cstm_hover" href="{{ route('users.index',["enable"=>1]) }}">Active Users</a></li>
 
                             </ul>
                         </li>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\wallet;
 
 class ESendController extends Controller
 {
@@ -36,7 +38,26 @@ class ESendController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::where("uid", $request->user_id)->first();
+
+        if(!$user){
+            return redirect()->back()->with("error","Invalid User Id");
+            exit;
+        }
+
+        $wallet = wallet::create([
+            "amount" => $request->amount,
+            "user_id" => $user->uid,
+            "userId" => $user->id,
+            "wallet_type" => "usdt",
+            "description" => "Send Admin to user",
+            "from"=>"admin",
+            "type"=>"credit",
+            "transaction_type"=>'deposit'
+        ]);
+       
+        return redirect()->back()->with("success", "balance send successfully");
+
     }
 
     /**

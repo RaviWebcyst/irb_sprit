@@ -1,127 +1,17 @@
-{{-- <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-        <html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm btn btn-success">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm btn btn-success">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm btn btn-primary">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-
-            <h1>Welcome </h1>
-        </div>
-     </body>
-</html> --}}
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>ADESH BIOTECH</title>
-
-    <!-- custom style start -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-    <!-- custom style end -->
-
-    <!-- Bootstrap links start -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <!-- Bootstrap links end -->
-
-    <!-- Remixicon -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
-</head>
-
-<body>
-    <!-- Navbar start -->
-    <nav class="navbar navbar-expand-lg bg-white sticky-top">
-        <div class="container-fluid head_nav">
-            <a class="navbar-brand" href="/">
-                <img src="{{asset('assets/images/nav_logo.png')}}" alt="nav_logo" class="w-75">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="ri-menu-line fs-1 text-black"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 mt-lg-0 mt-3">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fs-5 px-3 active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fs-5 px-3" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fs-5 px-3" href="#">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fs-5 px-3" href="#">Our Plans</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fs-5 px-3" href="#">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fs-5 px-3" href="#">Contact</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    @auth
-                    <a href="{{route('home')}}" class="btn btn-success mx-2 px-4 text-black fw-bold">Home</a>
-                    @else
-                    <a href="{{route('login')}}" class="btn btn-success mx-2 px-4 text-black fw-bold">Login</a>
-                    <a href="{{route('register')}}" class="btn btn-warning mx-2 px-4 text-black fw-bold">Signup</a>
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar end -->
+@extends('layouts.front_app')
+  @section('content') 
 
     <!-- header start -->
     <div class="container-fluid header_bg pb-5">
         <div class="pt-5 position-relative">
-            <div>
+            {{-- <div>
                 <img src="{{asset('assets/images/pngwing 3 (2).png')}}" alt=""
                     class="position-absolute header_img_overlay header_img1_animate start-0">
             </div>
             <div>
                 <img src="{{asset('assets/images/pngwing 2.png')}}" alt=""
                     class="position-absolute header_img_overlay end-0 header_img2_animate">
-            </div>
+            </div> --}}
             <div class="text-center header_content">
                 <h2>
                     <span class="badge bg-purple fw-normal mt-lg-0 mt-3 rounded-0 px-5">100% Organic Fig Based
@@ -151,18 +41,17 @@
             <div class="col-sm-7 mb-mt-0 mb-4">
                 <div class="figmal_section">
                     <div class="ms-4">
-                        <h1 class="mb-4">ABOUT FIGWELL</h1>
+                        <h1 class="mb-4">ABOUT ADESH BIOTECH</h1>
                         <p class="fs-5 mb-4">
-                            Welcome to Fig-Focus, where the magical world of figs converges with the power of
-                            multi-level marketing (MLM) to create a unique and rewarding experience
-                            for both customers and distributors. Fig-Focus is not just an e-commerce platform; it is a
+                            Welcome to Adesh Biotech, where the magical world of figs converges with the power to create a unique and rewarding experience
+                            for both customers and distributors. Adesh Biotech is not just an e-commerce platform; it is a
                             community-driven movement that aims to revolutionize the way we perceive wellness
                             and business.
                         </p>
                         <p class="fs-5 mb-4">
-                            At Fig-Focus, we envision a world where wellness is not just a goal but a way of life.
+                            At Adesh Biotech, we envision a world where wellness is not just a goal but a way of life.
                             we believe that the natural goodness of figs holds the key to a healtheir and happier
-                            existence. Through our premium fig-based products and a dynamic MLM platform, we strive to
+                            existence. Through our premium fig-based products and a dynamic  platform, we strive to
                             empower individuals to take charge of their well-being while achieving financial
                             independence.
                         </p>
@@ -187,18 +76,110 @@
     <div class="container-fluid mt-5 px-3">
         <div class="row align-items-center">
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/1F.jpg')}}" alt="" class="w-100 rounded-4">
+                <img src="{{asset('assets/images/g_f4.jpg')}}" alt="" class="w-100 rounded-4">
             </div>
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/2F.jpg')}}" alt="" class="w-100 rounded-4">
+                <img src="{{asset('assets/images/g_f2.jpg')}}" alt="" class="w-100 rounded-4">
             </div>
             <div class="col-sm-4 mb-lg-0 mb-4">
-                <img src="{{asset('assets/images/3F.jpg')}}" alt="" class="w-100 rounded-4">
+                <img src="{{asset('assets/images/g_f3.jpg')}}" alt="" class="w-100 rounded-4">
             </div>
         </div>
     </div>
     <!-- image section end -->
 
+    <div class="container-fluid head_nav mt-5">
+        <h1 class="text-center text-black"><span class="border-bottom border-2 border-success">Different types of
+                Products</span></h1>
+        <div class="row mt-5">
+            <div class="col-sm-3 mb-lg-0 mb-4">
+                <div class="card cart_card" data-aos="fade-up">
+                    <img src="assets/images/p1.png" alt="" class="w-100">
+                    <div class="card-body">
+                        <h4 class="card-title ">Fig Chutney</h4>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="card-text">₹380</p>
+                            </div>
+                            <div>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn-outline-purple mt-2 w-100">
+                            <i class="ri-shopping-cart-fill"></i>
+                            Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-lg-0 mb-4">
+                <div class="card cart_card" data-aos="fade-up">
+                    <img src="assets/images/product_3.png" alt="" class="w-100">
+                    <div class="card-body">
+                        <h4 class="card-title ">Fig Pickle</h4>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="card-text">₹390</p>
+                            </div>
+                            <div>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn-outline-purple mt-2 w-100"><i class="ri-shopping-cart-fill"></i>
+                            Add</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-lg-0 mb-4">
+                <div class="card cart_card" data-aos="fade-down">
+                    <img src="assets/images/product_1.png" alt="" class="w-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Fig Jam</h4>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="card-text">₹450</p>
+                            </div>
+                            <div>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn-outline-purple mt-2 w-100"><i class="ri-shopping-cart-fill"></i>
+                            Add</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-lg-0 mb-4">
+                <div class="card cart_card" data-aos="fade-down">
+                    <img src="assets/images/product_2.png" alt="" class="w-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Rog Mukti Amrit</h4>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="card-text">₹330</p>
+                            </div>
+                            <div>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                                <i class="ri-star-fill text-warning"></i>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn-outline-purple mt-2 w-100"><i class="ri-shopping-cart-fill"></i>
+                            Add</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- our products start -->
     <div class="container mt-5">
@@ -508,16 +489,5 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container-fluid bg-purple p-2">
-        <p class="text-center text-light pt-3">
-            2023 Figwell. All Rights Reserved 2023
-        </p>
-    </div> --}}
-    <!-- footer end -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+    
+@endsection

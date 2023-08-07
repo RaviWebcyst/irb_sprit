@@ -6,11 +6,18 @@
         <div class="container-fluid">
             <div class="row mt-5 justify-content-center">
                 <div class="col-lg-6 col-12 ">
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{session('error')}}</div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">{{session('success')}}</div>
+                    @endif
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Top up </h3>
                         </div>
-                        <form name="invest" method="post" action="controller/paymentContrroller.php">
+                        <form name="invest" method="post" action="{{route('invest.store')}}">
+                            @csrf
                             <h2 class="text-center"></h2>
                             <div class="card-body">
                                 <table class="table table-bordered table-hover">
@@ -19,12 +26,18 @@
                                             <th>Package
                                             </th>
                                             <td>
-                                                <ul style="list-style-type:none; font-weight:bold;">
-                                                                                                                                                                                                   
-                                                </ul>
+                                                <select name="package" id="" class="form-control">
+                                                    <option value="" disabled selected> Select Package</option>
+                                                    @if(!empty($package))
+                                                        <option value="{{$package->id}}"> ₹{{$package->amount}}</option>
+                                                    @endif
+                                                </select>
+                                                @error('package')
+                                                    <small class="text-danger">{{$message}}</small>
+                                                @enderror
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>User id
                                             </th>
                                             <td>
@@ -35,20 +48,20 @@
                                                 <p id='usernamechk'>
                                                 </p>
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                         <!--			<tr>                                                 <th>Order</th>                                               <td>                                                           <span id="share" class="form-control text-left" style="width:18.6%"></span>                                             </td>                                        </tr>    -->
-                                        <tr>
+                                        {{-- <tr>
                                             <th>Transaction key
                                             </th>
                                             <td>
                                                 <input type="password" name="master_key" class="form-control" required>
                                             </td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <td colspan="2" class="text-center">
                                                 <input type="submit" value="Pay with wallet"
                                                     name="pay-with-wallet-other" class="btn btn-info"
-                                                    onclick="confirm('Are you sure !!')">
+                                                    onclick="return confirm('Are you sure !!');">
                                                 <!--<input type="submit" value="Pay with BTC" name="pay-online" class="btn btn-success">-->
                                             </td>
                                         </tr>

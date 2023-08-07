@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\downline;
+use App\Models\package;
+use App\Models\pack_active;
+use App\Models\wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+use DB;
 
 use Illuminate\Support\Facades\Validator;
 use Auth;
@@ -79,7 +84,7 @@ class usersController extends Controller
 
     while ($while == true) {
         $udata = User::where("uid",$tagsp)->where("is_admin","!=",1)->get();
-        if(count($udata)<1 || $lv  == 12){
+        if(count($udata)<1 ){
             $while = false;
             break;
             exit;
@@ -113,11 +118,65 @@ class usersController extends Controller
     }
 
     public function invest(){
-        return view('user.topup_others');
+        $package = package::first();
+        return view('user.topup_others',compact('package'));
+    }
+
+    public function store_invest(Request $request){
+        $request->validate([
+            'package' => 'required',
+        ]);
+
+       
+        $user = Auth::user();
+    
+        $pack = package::where('id',$request->package)->first();
+        
+        $balance = $this->getBalance($user->id,"usdt");
+
+        if($pack->amount > $balance){
+            return redirect()->back()->with('error',"Insufficient Balance");
+            exit;
+        }
+
+        // if($request->amount %100 != 0){
+        //     return response()->json(['message'=>"Amount must be 100 or multiply of 100"],500);
+        //     exit;
+        // }
+
+        $wallet = wallet::create([
+            "amount" => $pack->amount,
+            "package_id" => $pack->id,
+            "user_id" => $user->uid,
+            "userId" => $user->id,
+            "wallet_type" => "usdt",
+            "description" => "debit from buy package ".$pack->amount,
+            "type"=>"debit",
+            "transaction_type"=>'invest'
+        ]);
+        
+
+        $package= new pack_active();
+        $package->user_id= $user->id;
+        $package->amount= $pack->amount;
+        $package->package_id = $pack->id;
+        $package->save();
+
+        $user = User::where("id",$user->id)->first();
+        // $user->package_amount = $request->amount;
+        $user->enable = 1;
+        $user->package = $pack->id;
+        $user->paid_date = Carbon::now();
+        $user->save();
+
+        $data = DB::update("UPDATE `downlines` SET `investment`=`investment`+'".$request->amount."' WHERE `user_id`='".$user->uid."'");
+
+        return redirect()->back()->with("success","Package activate successfully!");
     }
 
     public function invest_details(){
-        return view('user.topup_users');
+        $history= pack_active::join("packages","pack_actives.package_id","packages.id")->where("pack_actives.user_id",Auth::user()->id)->select('packages.*','pack_actives.*','pack_actives.amount as amount','pack_actives.created_at as created_at')->orderBy("pack_actives.id","desc")->paginate(50);
+        return view('user.topup_users',compact('history'));
     }
 
    
@@ -166,6 +225,14 @@ class usersController extends Controller
 
     public function withdraw_details(){
         return view('user.withdraw_details');
+    }
+
+    protected function getBalance($user_id,$wallet_type){
+        $credit = wallet::where("userId",$user_id)->where("wallet_type",$wallet_type)->where("type","credit")->sum('amount');
+        $debit = wallet::where("userId",$user_id)->where("wallet_type",$wallet_type)->where("type","debit")->sum('amount');
+
+        $balance = round($credit - $debit,2);
+        return $balance;
     }
 
 

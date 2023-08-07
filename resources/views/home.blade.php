@@ -58,7 +58,7 @@
                             <div class="small-box bg-info back">
                                 <div class="inner">
                                     <img src="{{asset('users/dist/img/three.png')}}" class="mb-2" width="50">
-                                    <p>E-WALLET<br><span class="h4"> 0 INR</span></p>
+                                    <p>E-WALLET<br><span class="h4">{{$deposit_bal}} INR</span></p>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +156,7 @@
         </div>
            <!--End Column-->
           <!--Start New Column-->
-        <div class="col-4 d-none d-lg-block d-xl-block">
+        <div class="col-md-4 ">
             <!--Section 1-->
             <section class="content mt-1 pb-5 d-none d-lg-block d-xl-block">
                 <div class="container ">
@@ -168,7 +168,7 @@
                 </section>
             <!--End Section 1-->
             <!--Section 2-->
-            <section class="content mt-4 d-none d-lg-block d-xl-block">
+            <section class="content mt-4">
                 <div class="container bground2">
                     <div class="row">
                         <div class="col-lg-12 pt-3 text-center">

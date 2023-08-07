@@ -117,3 +117,142 @@
     min-height: 600px !important;
   }
 }
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+.navbar-toggler {
+  outline: none !important;
+  border: none !important;
+}
+.header_bg {
+  background-image: url(../images/Rectangle\ 1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+}
+.header_img_overlay {
+  width: 20%;
+}
+.header_content {
+  margin-top: 6rem;
+}
+.bg-purple {
+  background-color: #683f95;
+}
+.text-purple {
+  color: #683f95;
+}
+.text-green {
+  color: #a3c744;
+}
+.text-orange {
+  color: #f59333;
+}
+.figmal_section {
+  border-left: #683f95 solid;
+  border-width: 15px;
+}
+.figmal_img_1 {
+  border-radius: 40px;
+  box-shadow: 30px 10px #f79333;
+}
+.benefits_bg {
+  background-image: url("../../assets/images/Rectangle\ 14.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.carousel_section_bg {
+  background-image: url("../../assets/images/Rectangle\ 20.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.benefits_content {
+  font-size: 14px;
+}
+.input-group-text {
+  background-color: #683f95 !important;
+}
+.header_img_2 {
+  top: 20rem;
+}
+.btn-outline-purple {
+  border: 1px solid #683f95 !important;
+  color: #683f95 !important;
+}
+.btn-outline-purple:hover {
+  background-color: #683f95 !important;
+  color: #fff !important;
+}
+@media screen and (min-width: 768px) {
+  .head_nav {
+    padding: 0px 50px !important;
+  }
+  .about_figmal_section {
+    padding: 10px 50px;
+  }
+  .benefits_icons {
+    padding: 15px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .header_img_1 {
+    top: -25px !important;
+  }
+  .header_img_2 {
+    top: 28rem !important;
+  }
+  .overlay_image {
+    overflow: hidden;
+    min-width: 300px;
+    object-fit: cover;
+  }
+  .badge {
+    font-size: 15px !important;
+  }
+  .header_content {
+    margin-top: 1rem;
+  }
+  .carousel-item {
+    min-height: 600px !important;
+  }
+}
+
+.overlay_image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.2s all;
+}
+.overlay_image a {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.overlay_image:hover::after {
+  background: rgba(0, 0, 0, 0.658);
+  transition: 0.5s all;
+}
+.overlay_image:hover a {
+  display: block;
+  z-index: 1;
+}
+.overlay_image {
+  overflow: hidden;
+  min-width: 300px;
+  object-fit: cover;
+}
+.overlay_image img {
+  transition: 0.5s all;
+}
+.overlay_image:hover img {
+  transform: scale(1.1);
+}
+

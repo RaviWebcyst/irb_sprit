@@ -53,155 +53,28 @@
                     <th>Action</th>
                 </tr>
             </thead>
+            @if(!empty($users))
             <tbody>
+                @foreach ($users as $key=>$user)
                 <tr>
-                    <td>1</td>
-                    <td>User</td>
-                    <td>JX483803</td>
-                    <td>user@gmail.com</td>
-                    <td>8989898989</td>
-                    <td>Test@123</td>
-                    <td>0</td>
-                    <td>Free<br>0.00</td>
-                    <td>Jx927220</td>
-                    <td>0<br>20</td>
-                    <td>2023-07-31 10:20:30</td>
-                    <td>
-                        <button type="button" class=" btn btn-danger mt-1"><i
-                                class="ri-arrow-right-line"></i></button>
-                        <button type="button" class=" btn btn-success mt-1"><i class="ri-eye-line"></i></button>
-                    </td>
+                    <td>{{$users->firstItem()+$key}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->uid}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->phone}}</td>
+                    <td>{{$user->showPass}}</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{$user->spid}}</td>
+                    <td></td>
+                    <td>{{$user->created_at}}</td>
+                    <td></td>
                 </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Test</td>
-                    <td>JX483983</td>
-                    <td>test@gmail.com</td>
-                    <td>9090909090</td>
-                    <td>User@123</td>
-                    <td>2</td>
-                    <td>(100)<br>0.00</td>
-                    <td>Jx927176</td>
-                    <td>365<br>0</td>
-                    <td>2023-07-31 10:20:30</td>
-                    <td>
-                        <button type="button" class=" btn btn-danger mt-1"><i
-                                class="ri-arrow-right-line"></i></button>
-                        <button type="button" class=" btn btn-success mt-1"><i class="ri-eye-line"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>Test</td>
-                    <td>JX483983</td>
-                    <td>test@gmail.com</td>
-                    <td>9090909090</td>
-                    <td>User@123</td>
-                    <td>2</td>
-                    <td>(100)<br>0.00</td>
-                    <td>Jx927176</td>
-                    <td>365<br>0</td>
-                    <td>2023-07-31 10:20:30</td>
-                    <td>
-                        <button type="button" class=" btn btn-danger mt-1"><i
-                                class="ri-arrow-right-line"></i></button>
-                        <button type="button" class=" btn btn-success mt-1"><i class="ri-eye-line"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Test</td>
-                    <td>JX483983</td>
-                    <td>test@gmail.com</td>
-                    <td>9090909090</td>
-                    <td>User@123</td>
-                    <td>2</td>
-                    <td>(100)<br>0.00</td>
-                    <td>Jx927176</td>
-                    <td>365<br>0</td>
-                    <td>2023-07-31 10:20:30</td>
-                    <td>
-                        <button type="button" class=" btn btn-danger mt-1"><i
-                                class="ri-arrow-right-line"></i></button>
-                        <button type="button" class=" btn btn-success mt-1"><i class="ri-eye-line"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Test</td>
-                    <td>JX483983</td>
-                    <td>test@gmail.com</td>
-                    <td>9090909090</td>
-                    <td>User@123</td>
-                    <td>2</td>
-                    <td>(100)<br>0.00</td>
-                    <td>Jx927176</td>
-                    <td>365<br>0</td>
-                    <td>2023-07-31 10:20:30</td>
-                    <td>
-                        <button type="button" class=" btn btn-danger mt-1"><i
-                                class="ri-arrow-right-line"></i></button>
-                        <button type="button" class=" btn btn-success mt-1"><i class="ri-eye-line"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Test</td>
-                    <td>JX483983</td>
-                    <td>test@gmail.com</td>
-                    <td>9090909090</td>
-                    <td>User@123</td>
-                    <td>2</td>
-                    <td>(100)<br>0.00</td>
-                    <td>Jx927176</td>
-                    <td>365<br>0</td>
-                    <td>2023-07-31 10:20:30</td>
-                    <td>
-                        <button type="button" class=" btn btn-danger mt-1"><i
-                                class="ri-arrow-right-line"></i></button>
-                        <button type="button" class=" btn btn-success mt-1"><i class="ri-eye-line"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Test</td>
-                    <td>JX483983</td>
-                    <td>test@gmail.com</td>
-                    <td>9090909090</td>
-                    <td>User@123</td>
-                    <td>2</td>
-                    <td>(100)<br>0.00</td>
-                    <td>Jx927176</td>
-                    <td>365<br>0</td>
-                    <td>2023-07-31 10:20:30</td>
-                    <td>
-                        <button type="button" class=" btn btn-danger mt-1"><i
-                                class="ri-arrow-right-line"></i></button>
-                        <button type="button" class=" btn btn-success mt-1"><i class="ri-eye-line"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Test</td>
-                    <td>JX483983</td>
-                    <td>test@gmail.com</td>
-                    <td>9090909090</td>
-                    <td>User@123</td>
-                    <td>2</td>
-                    <td>(100)<br>0.00</td>
-                    <td>Jx927176</td>
-                    <td>365<br>0</td>
-                    <td>2023-07-31 10:20:30</td>
-                    <td>
-                        <button type="button" class=" btn btn-danger mt-1"><i
-                                class="ri-arrow-right-line"></i></button>
-                        <button type="button" class=" btn btn-success mt-1"><i class="ri-eye-line"></i></button>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
+           @endif
         </table>
+        {{$users->links()}}
     </div>
 </div>
 @endsection

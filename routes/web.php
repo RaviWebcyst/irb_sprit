@@ -28,15 +28,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('admin/login', [HomeController::class, 'loginform']);
-Route::post('adminlogincheck', [HomeController::class, 'adminlogin_check'])->name('admin.login.check');
-Route::post('userlogincheck', [HomeController::class, 'userlogin_check'])->name('user.login.check');
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

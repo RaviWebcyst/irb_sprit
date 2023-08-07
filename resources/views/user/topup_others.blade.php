@@ -35,9 +35,6 @@
                                                 @error('package')
                                                     <small class="text-danger">{{$message}}</small>
                                                 @enderror
-                                                <ul style="list-style-type:none; font-weight:bold;">
-
-                                                </ul>
                                             </td>
                                         </tr>
                                         {{-- <tr>
@@ -98,7 +95,7 @@ function checkSponsor() {
         complete: function() {},
         success: function(data) {
             document.getElementById("usernamechk").innerHTML = data.user_name;
-            //                $('#pay_sponsor').val(uname);
+            //                $('#pay_sponsor').val(uname);   
         },
         error:function(err){
             document.getElementById("usernamechk").innerHTML = err.responseJSON.error;
